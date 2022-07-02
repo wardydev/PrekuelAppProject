@@ -1,12 +1,39 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {TextInput, StyleSheet, ScrollView} from 'react-native';
+
+import WrapperScreen from '../../components/WrapperScreen';
+import HeadingScreen from '../../components/atomic/HeadingScreen';
+import {primaryFont} from '../../utils/constants/fontSize';
+import TagCategories from '../../components/TagCategories';
+import HeaderTitle from '../../components/HeaderTitle';
+import ArticleList from '../../components/ArticleLists';
 
 const Explores = () => {
   return (
-    <View>
-      <Text>Explores</Text>
-    </View>
+    <ScrollView>
+      <WrapperScreen>
+        <HeadingScreen />
+        <TextInput style={styles.input} placeholder="Cari berita mu disini.." />
+        <TagCategories />
+        <HeaderTitle isSeeAll={true} title="Rekomendasi" />
+        <ArticleList />
+        <ArticleList />
+        <ArticleList />
+      </WrapperScreen>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    marginVertical: 24,
+    height: 45,
+    padding: 10,
+    borderRadius: 6,
+    backgroundColor: '#E9E9E9',
+    fontFamily: primaryFont,
+    fontSize: 16,
+  },
+});
 
 export default Explores;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View} from 'react-native';
+import {Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Explores from '../screens/Explores';
@@ -26,6 +26,7 @@ const StackNavigation = () => {
           headerTitle: props => <LogoTitle {...props} />,
           headerTitleAlign: 'center',
           headerStyle: {backgroundColor: '#F8F9FA'},
+          headerShown: true,
         }}
         name="Tab"
         component={TabNavigation}
