@@ -8,12 +8,17 @@ import {getSomeStringArticleTitle} from '../../utils/functions/getSomeString';
 const CarouselItem = ({data}) => {
   return (
     <TouchableOpacity style={styles.container}>
-      <Image style={styles.imageItem} source={{uri: data.imgUrl}} />
+      <Image
+        style={styles.imageItem}
+        source={{
+          uri: data.better_featured_image.media_details.sizes.medium.source_url,
+        }}
+      />
       <LinearGradient
         colors={['#1E346444', 'black']}
         style={styles.linearGradient}>
         <Text style={styles.titleCarousel}>
-          {getSomeStringArticleTitle(data.title)}
+          {getSomeStringArticleTitle(data.title.rendered)}
         </Text>
       </LinearGradient>
     </TouchableOpacity>

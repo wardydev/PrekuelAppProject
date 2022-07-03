@@ -1,20 +1,29 @@
 import React, {useState, useRef} from 'react';
-import {View, Dimensions, StyleSheet} from 'react-native';
+import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {renderCarousel} from '../../utils/functions/renderCarousel';
 
-import DataCarousel from '../../utils/constants/DataCarousel';
+// import DataCarousel from '../../utils/constants/DataCarousel';
+import useFetch from '../../hooks/useFetch';
 
 const CarouseBanner = () => {
   const carouselRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
 
+  const {data, loading, error} = useFetch(
+    'https://prekuel.com/wp-json/wp/v2/posts?per_page=4',
+  );
+
+  if (loading) {
+    return <Text style={{backgroundColor: 'red'}}>Loading..</Text>;
+  }
+
   return (
     <View>
       <Carousel
         ref={carouselRef}
-        data={DataCarousel}
+        data={data && data}
         renderItem={renderCarousel}
         sliderWidth={windowWidth}
         itemWidth={300}
@@ -23,7 +32,7 @@ const CarouseBanner = () => {
         useScrollView={true}
       />
       <Pagination
-        dotsLength={DataCarousel.length}
+        dotsLength={data && data}
         activeDotIndex={index}
         carouselRef={carouselRef}
         dotStyle={styles.dotStyle}
