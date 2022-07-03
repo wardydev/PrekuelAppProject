@@ -1,9 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Image, StyleSheet, View, Text} from 'react-native';
-
-// import {primaryFont} from '../../utils/constants/fontSize';
-// import {getSomeStringArticleTitle} from '../../utils/functions/getSomeString';
-// <Image style={styles.imageItem} source={{uri: data.imgUrl}} />
+import {grayColor} from '../../utils/constants/fontSize';
 
 import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
@@ -31,7 +28,7 @@ const PostItem = ({data}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {padding: 20, backgroundColor: '#f8f9fa', borderRadius: 12},
+  container: {padding: 20, backgroundColor: '#F0F0F0', borderRadius: 12},
   headerPostContainer: {
     display: 'flex',
     flexDirection: 'row',

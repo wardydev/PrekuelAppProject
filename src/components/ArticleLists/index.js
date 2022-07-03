@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 
 import AutorTitle from '../atomic/AutorTitle';
 import TagTitle from '../atomic/TagTitle';

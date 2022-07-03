@@ -10,7 +10,7 @@ const CarouselItem = ({data}) => {
     <TouchableOpacity style={styles.container}>
       <Image style={styles.imageItem} source={{uri: data.imgUrl}} />
       <LinearGradient
-        colors={['#ffffff44', 'black']}
+        colors={['#1E346444', 'black']}
         style={styles.linearGradient}>
         <Text style={styles.titleCarousel}>
           {getSomeStringArticleTitle(data.title)}

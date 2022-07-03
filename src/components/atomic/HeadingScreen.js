@@ -1,19 +1,25 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {primaryFont, h2, blackColor} from '../../utils/constants/fontSize';
+import {
+  primaryFont,
+  h2,
+  blackColor,
+  grayColor,
+} from '../../utils/constants/fontSize';
 
-const HeadingScreen = () => {
+const HeadingScreen = ({heading, paragraph}) => {
   return (
-    <View>
-      <Text style={styles.heading}>Explores</Text>
-      <Text style={styles.headingParagraph}>
-        Explores your Favorit articles
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.heading}>{heading}</Text>
+      <Text style={styles.headingParagraph}>{paragraph}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 12,
+  },
   heading: {
     fontFamily: primaryFont,
     fontSize: h2,
@@ -24,7 +30,7 @@ const styles = StyleSheet.create({
   headingParagraph: {
     fontSize: 16,
     fontFamily: primaryFont,
-    color: '#cccccc',
+    color: grayColor,
   },
 });
 

@@ -7,6 +7,7 @@ const WrapperScreen = ({children}) => {
 
 const styles = StyleSheet.create({
   wrapper: {
+    backgroundColor: '#f8f9fa',
     paddingVertical: 16,
     paddingHorizontal: 24,
     overflow: 'hidden',

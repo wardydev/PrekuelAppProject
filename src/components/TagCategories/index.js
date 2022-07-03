@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {primaryColor} from '../../utils/constants/fontSize';
 
 const TagCategories = () => {
   return (
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   textCategory: {
-    color: '#E31E26',
+    color: primaryColor,
   },
 });
 

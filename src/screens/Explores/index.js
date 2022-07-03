@@ -12,7 +12,7 @@ const Explores = () => {
   return (
     <ScrollView>
       <WrapperScreen>
-        <HeadingScreen />
+        <HeadingScreen heading="Explores" paragraph="Explore your news" />
         <TextInput style={styles.input} placeholder="Cari berita mu disini.." />
         <TagCategories />
         <HeaderTitle isSeeAll={true} title="Rekomendasi" />
@@ -26,7 +26,8 @@ const Explores = () => {
 
 const styles = StyleSheet.create({
   input: {
-    marginVertical: 24,
+    marginBottom: 24,
+    marginTop: 8,
     height: 45,
     padding: 10,
     borderRadius: 6,
