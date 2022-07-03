@@ -1,6 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Image, StyleSheet, View, Text} from 'react-native';
-import {grayColor} from '../../utils/constants/fontSize';
+import {TouchableOpacity, Image, StyleSheet, View} from 'react-native';
 
 import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
@@ -11,17 +10,32 @@ const PostItem = ({data}) => {
     <TouchableOpacity style={styles.container}>
       <View style={styles.headerPostContainer}>
         <View style={styles.headerProfile}>
-          <View style={styles.profilePict}></View>
+          <Image
+            style={styles.profilePict}
+            source={{
+              uri: data.yoast_head_json.schema['@graph'][4]['image']['url'],
+            }}
+          />
           <View>
-            <TitleList title="wardy" />
-            <TimeList minutes="1 Hour Ago" />
+            <TitleList
+              title={data.yoast_head_json.twitter_misc['Written by']}
+            />
+            <TimeList
+              minutes={data.yoast_head_json.twitter_misc['Est. reading time']}
+            />
           </View>
         </View>
-        <TagTitle tags="kdrama" isPrimary={false} />
+        <TagTitle categoryId={data.categories[0]} isPrimary={false} />
       </View>
       <View style={styles.headerContent}>
-        <TitleList title="Ms marvel akan rilis di disney+ tahun ini tepat di bulan mei" />
-        <Image style={styles.imageContent} source={{uri: data.imgUrl}} />
+        <TitleList title={data.title.rendered} />
+        <Image
+          style={styles.imageContent}
+          source={{
+            uri: data.better_featured_image.media_details.sizes.medium
+              .source_url,
+          }}
+        />
       </View>
     </TouchableOpacity>
   );

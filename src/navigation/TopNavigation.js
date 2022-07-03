@@ -20,7 +20,7 @@ const TopNavigation = () => {
       }}>
       <Top.Screen
         options={{tabBarLabel: 'Marvel'}}
-        name="ArticlesTopBar"
+        name="Marvel"
         component={Articles}
       />
       <Top.Screen

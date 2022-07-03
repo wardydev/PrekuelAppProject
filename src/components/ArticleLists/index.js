@@ -14,10 +14,11 @@ import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 import useFetch from '../../hooks/useFetch';
 
-const ArticleLists = () => {
-  const {data, loading, error} = useFetch(
-    'https://prekuel.com/wp-json/wp/v2/posts?per_page=5',
-  );
+const ArticleLists = ({isCategory}) => {
+  const url = isCategory
+    ? 'https://prekuel.com/wp-json/wp/v2/posts?categories=28&per_page=5'
+    : 'https://prekuel.com/wp-json/wp/v2/posts?per_page=5';
+  const {data, loading, error} = useFetch(url);
 
   const renderItem = ({item}) => {
     return (
@@ -30,11 +31,7 @@ const ArticleLists = () => {
           }}
         />
         <View style={styles.titleContainer}>
-          <TagTitle
-            categoryId={item.categories[0]}
-            tags="avengers"
-            isPrimary={true}
-          />
+          <TagTitle categoryId={item.categories[0]} isPrimary={true} />
           <TitleList title={item.title.rendered} />
           <View style={styles.footerList}>
             <AutorTitle

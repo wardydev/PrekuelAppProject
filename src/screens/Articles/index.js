@@ -13,7 +13,7 @@ const Articles = () => {
       <PostArticles />
       <WrapperScreen>
         <HeaderTitle title="Reading List" isSeeAll={true} />
-        <ArticleLists />
+        <ArticleLists isCategory={true} />
       </WrapperScreen>
     </ScrollView>
   );

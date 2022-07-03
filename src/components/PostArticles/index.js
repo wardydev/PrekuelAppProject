@@ -3,18 +3,21 @@ import {View, Dimensions, StyleSheet} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {renderPostCarousel} from '../../utils/functions/renderPostCarousel';
 
-import DataCarousel from '../../utils/constants/DataCarousel';
+import useFetch from '../../hooks/useFetch';
 
 const PostArticles = () => {
   const postRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
+  const {data, loading, error} = useFetch(
+    'https://prekuel.com/wp-json/wp/v2/posts?categories=42&per_page=3',
+  );
 
   return (
     <View style={styles.postContainer}>
       <Carousel
         ref={postRef}
-        data={DataCarousel}
+        data={data && data}
         renderItem={renderPostCarousel}
         sliderWidth={windowWidth}
         itemWidth={300}
@@ -23,7 +26,7 @@ const PostArticles = () => {
         useScrollView={true}
       />
       <Pagination
-        dotsLength={DataCarousel.length}
+        dotsLength={data && data.length}
         activeDotIndex={index}
         carouselRef={postRef}
         dotStyle={styles.dotStyle}
