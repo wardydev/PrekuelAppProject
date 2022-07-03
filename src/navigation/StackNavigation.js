@@ -3,9 +3,9 @@ import {Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Explores from '../screens/Explores';
-import Articles from '../screens/Articles';
 
 import TabNavigation from './TabNavigation';
+import TopNavigation from './TopNavigation';
 
 const Stack = createStackNavigator();
 
@@ -32,7 +32,7 @@ const StackNavigation = () => {
         component={TabNavigation}
       />
       <Stack.Screen name="Explores" component={Explores} />
-      <Stack.Screen name="Articles" component={Articles} />
+      <Stack.Screen name="Articles" component={TopNavigation} />
     </Stack.Navigator>
   );
 };

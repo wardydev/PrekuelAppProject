@@ -1,21 +1,21 @@
 import React, {useState, useRef} from 'react';
 import {View, Dimensions, StyleSheet} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {renderCarousel} from '../../utils/functions/renderCarousel';
+import {renderPostCarousel} from '../../utils/functions/renderPostCarousel';
 
 import DataCarousel from '../../utils/constants/DataCarousel';
 
-const CarouseBanner = () => {
-  const carouselRef = useRef();
+const PostArticles = () => {
+  const postRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
 
   return (
-    <View>
+    <View style={styles.postContainer}>
       <Carousel
-        ref={carouselRef}
+        ref={postRef}
         data={DataCarousel}
-        renderItem={renderCarousel}
+        renderItem={renderPostCarousel}
         sliderWidth={windowWidth}
         itemWidth={300}
         loop={true}
@@ -25,7 +25,7 @@ const CarouseBanner = () => {
       <Pagination
         dotsLength={DataCarousel.length}
         activeDotIndex={index}
-        carouselRef={carouselRef}
+        carouselRef={postRef}
         dotStyle={styles.dotStyle}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
@@ -36,6 +36,9 @@ const CarouseBanner = () => {
 };
 
 const styles = StyleSheet.create({
+  postContainer: {
+    marginTop: 36,
+  },
   dotStyle: {
     width: 10,
     height: 10,
@@ -45,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CarouseBanner;
+export default PostArticles;

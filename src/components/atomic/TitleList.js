@@ -5,7 +5,9 @@ import {primaryFont} from '../../utils/constants/fontSize';
 
 const TitleList = ({title}) => {
   return (
-    <Text style={styles.titleList}>{getSomeStringArticleTitle(title)}</Text>
+    <Text style={styles.titleList}>
+      {Array.from(title).length < 10 ? title : getSomeStringArticleTitle(title)}
+    </Text>
   );
 };
 

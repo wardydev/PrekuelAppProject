@@ -16,7 +16,7 @@ const ArticleLists = () => {
         }}
       />
       <View style={styles.titleContainer}>
-        <TagTitle tags="avengers" />
+        <TagTitle tags="avengers" isPrimary={true} />
         <TitleList
           title={
             'TV Spot Black Adam Menampilkan Scene Lebih Banyak untuk Debut The Rock di DC'

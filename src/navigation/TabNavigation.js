@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from '../screens/Home';
 import Explores from '../screens/Explores';
-import Articles from '../screens/Articles';
+import TopNavigation from './TopNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +15,7 @@ const TabNavigation = () => {
       }}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Explores" component={Explores} />
-      <Tab.Screen name="Articles" component={Articles} />
+      <Tab.Screen name="Articles" component={TopNavigation} />
     </Tab.Navigator>
   );
 };
