@@ -17,8 +17,6 @@ const Explores = () => {
         <TagCategories />
         <HeaderTitle isSeeAll={true} title="Rekomendasi" />
         <ArticleList />
-        <ArticleList />
-        <ArticleList />
       </WrapperScreen>
     </ScrollView>
   );

@@ -20,8 +20,6 @@ const Home = () => {
       <WrapperScreen>
         <HeaderTitle title="Terbaru" isSeeAll={true} />
         <ArticleLists />
-        <ArticleLists />
-        <ArticleLists />
       </WrapperScreen>
     </ScrollView>
   );

@@ -14,8 +14,6 @@ const Articles = () => {
       <WrapperScreen>
         <HeaderTitle title="Reading List" isSeeAll={true} />
         <ArticleLists />
-        <ArticleLists />
-        <ArticleLists />
       </WrapperScreen>
     </ScrollView>
   );

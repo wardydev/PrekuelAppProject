@@ -1,33 +1,69 @@
 import React from 'react';
-import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  Text,
+} from 'react-native';
 
 import AutorTitle from '../atomic/AutorTitle';
 import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
+import useFetch from '../../hooks/useFetch';
 
 const ArticleLists = () => {
-  return (
-    <TouchableOpacity style={styles.container}>
-      <Image
-        style={styles.imageList}
-        source={{
-          uri: 'https://static.republika.co.id/uploads/images/inpicture_slide/040385300-1599905210-595e0d7b6e158-spiderman-homeco.jpg',
-        }}
-      />
-      <View style={styles.titleContainer}>
-        <TagTitle tags="avengers" isPrimary={true} />
-        <TitleList
-          title={
-            'TV Spot Black Adam Menampilkan Scene Lebih Banyak untuk Debut The Rock di DC'
-          }
+  const {data, loading, error} = useFetch(
+    'https://prekuel.com/wp-json/wp/v2/posts?per_page=5',
+  );
+
+  const renderItem = ({item}) => {
+    return (
+      <TouchableOpacity style={styles.container}>
+        <Image
+          style={styles.imageList}
+          source={{
+            uri: item.better_featured_image.media_details.sizes.medium
+              .source_url,
+          }}
         />
-        <View style={styles.footerList}>
-          <AutorTitle author="hairul wardi" />
-          <TimeList minutes="2 minutes ago" />
+        <View style={styles.titleContainer}>
+          <TagTitle tags="avengers" isPrimary={true} />
+          <TitleList title={item.title.rendered} />
+          <View style={styles.footerList}>
+            <AutorTitle
+              author={item.yoast_head_json.twitter_misc['Written by']}
+            />
+            <TimeList
+              minutes={item.yoast_head_json.twitter_misc['Est. reading time']}
+            />
+          </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    );
+  };
+
+  if (loading) {
+    return <Text style={{backgroundColor: 'red'}}>Loading...</Text>;
+  }
+
+  const getHeader = () => {
+    return <Text>Header</Text>;
+  };
+  const getFooter = () => {
+    return <Text>Footer</Text>;
+  };
+
+  return (
+    <FlatList
+      LisHeaderComponent={getHeader}
+      data={data && data}
+      renderItem={renderItem}
+      keyExtractor={item => item.id}
+      ListFooterComponent={getFooter}
+    />
   );
 };
 
