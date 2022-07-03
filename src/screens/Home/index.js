@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, Text, StyleSheet} from 'react-native';
+import {ScrollView} from 'react-native';
 import CarouseBanner from '../../components/CarouselBanner';
 
 import HeaderTitle from '../../components/HeaderTitle';

@@ -2,11 +2,12 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import {primaryFont} from '../../utils/constants/fontSize';
+import {categoryList} from '../../utils/functions/categoryList';
 
-const TagTitle = ({tags, isPrimary}) => {
+const TagTitle = ({tags, isPrimary, categoryId}) => {
   return (
     <View style={isPrimary ? styles.primaryTag : styles.secondaryTag}>
-      <Text style={styles.tagTitle}>{tags}</Text>
+      <Text style={styles.tagTitle}>{categoryList(categoryId)}</Text>
     </View>
   );
 };

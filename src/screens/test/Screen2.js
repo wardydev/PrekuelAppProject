@@ -8,8 +8,6 @@ const Screen2 = () => {
     'https://jsonplaceholder.typicode.com/users',
   );
 
-  console.log(data);
-
   const renderItem = ({item}) => {
     return <Text>{item.name}</Text>;
   };

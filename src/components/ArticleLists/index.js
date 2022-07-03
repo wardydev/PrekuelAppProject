@@ -30,7 +30,11 @@ const ArticleLists = () => {
           }}
         />
         <View style={styles.titleContainer}>
-          <TagTitle tags="avengers" isPrimary={true} />
+          <TagTitle
+            categoryId={item.categories[0]}
+            tags="avengers"
+            isPrimary={true}
+          />
           <TitleList title={item.title.rendered} />
           <View style={styles.footerList}>
             <AutorTitle
