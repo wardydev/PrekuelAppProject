@@ -14,7 +14,7 @@ import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 import useFetch from '../../hooks/useFetch';
 
-const ArticleLists = ({isCategory}) => {
+const ArticleLists = ({isCategory, navigation}) => {
   const url = isCategory
     ? 'https://prekuel.com/wp-json/wp/v2/posts?categories=28&per_page=5'
     : 'https://prekuel.com/wp-json/wp/v2/posts?per_page=5';
@@ -22,7 +22,20 @@ const ArticleLists = ({isCategory}) => {
 
   const renderItem = ({item}) => {
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() =>
+          navigation.navigate('Article', {
+            itemId: item.id,
+            title: item.title.rendered,
+            thumbnail:
+              item.better_featured_image.media_details.sizes.medium.source_url,
+            authorImage:
+              item.yoast_head_json.schema['@graph'][4]['image']['url'],
+            authorName: item.yoast_head_json.twitter_misc['Written by'],
+            date: item.yoast_head_json.twitter_misc['Est. reading time'],
+          })
+        }>
         <Image
           style={styles.imageList}
           source={{

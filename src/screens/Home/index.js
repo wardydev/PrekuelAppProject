@@ -7,7 +7,7 @@ import WrapperScreen from '../../components/WrapperScreen';
 import ArticleLists from '../../components/ArticleLists';
 import HeadingScreen from '../../components/atomic/HeadingScreen';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <ScrollView>
       <WrapperScreen>
@@ -19,7 +19,7 @@ const Home = () => {
       <CarouseBanner />
       <WrapperScreen>
         <HeaderTitle title="Terbaru" isSeeAll={true} />
-        <ArticleLists />
+        <ArticleLists navigation={navigation} />
       </WrapperScreen>
     </ScrollView>
   );

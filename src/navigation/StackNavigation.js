@@ -3,6 +3,7 @@ import {Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Explores from '../screens/Explores';
+import Article from '../screens/Article';
 
 import TabNavigation from './TabNavigation';
 import TopNavigation from './TopNavigation';
@@ -33,6 +34,11 @@ const StackNavigation = () => {
       />
       <Stack.Screen name="Explores" component={Explores} />
       <Stack.Screen name="Articles" component={TopNavigation} />
+      <Stack.Screen
+        options={{headerTitleAlign: 'center'}}
+        name="Article"
+        component={Article}
+      />
     </Stack.Navigator>
   );
 };
