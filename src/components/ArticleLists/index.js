@@ -34,7 +34,7 @@ const ArticleLists = ({navigation, url, isPost}) => {
             authorImage:
               item.yoast_head_json.schema['@graph'][4]['image']['url'],
             authorName: item.yoast_head_json.twitter_misc['Written by'],
-            date: item.yoast_head_json.twitter_misc['Est. reading time'],
+            date: item.date,
             source: item.content.rendered,
           })
         }>
@@ -51,10 +51,9 @@ const ArticleLists = ({navigation, url, isPost}) => {
           <View style={styles.footerList}>
             <AutorTitle
               author={item.yoast_head_json.twitter_misc['Written by']}
+              isLarge={false}
             />
-            <TimeList
-              minutes={item.yoast_head_json.twitter_misc['Est. reading time']}
-            />
+            <TimeList minutes={item.date} />
           </View>
         </View>
       </TouchableOpacity>

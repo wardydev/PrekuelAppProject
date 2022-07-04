@@ -91,7 +91,7 @@ const Article = ({route}) => {
                 }}
               />
               <View>
-                <AutorTitle author={authorName && authorName} />
+                <AutorTitle author={authorName && authorName} isLarge={true} />
                 <TimeList minutes={date && date} />
               </View>
             </View>

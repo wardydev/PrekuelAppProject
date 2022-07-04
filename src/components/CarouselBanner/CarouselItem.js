@@ -28,7 +28,7 @@ const CarouselItem = ({data, navigation}) => {
         }}
       />
       <LinearGradient
-        colors={['#1E346444', 'black']}
+        colors={['#1E346455', '#1E3464']}
         style={styles.linearGradient}>
         <Text style={styles.titleCarousel}>
           {getSomeStringArticleTitle(data.title.rendered)}

@@ -8,6 +8,7 @@ import Disney from '../../components/categories/Disney';
 import Kdrama from '../../components/categories/Kdrama';
 import Netflix from '../../components/categories/Netflix';
 import SerialTv from '../../components/categories/SerialTv';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Categories = ({navigation}) => {
   const route = useRoute();
@@ -29,7 +30,11 @@ const Categories = ({navigation}) => {
     }
   };
 
-  return <View>{categoryView()}</View>;
+  return (
+    <ScrollView showsVerticalScrollIndicator={false}>
+      {categoryView()}
+    </ScrollView>
+  );
 };
 
 export default Categories;

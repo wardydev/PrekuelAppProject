@@ -3,11 +3,11 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {h3, aLink} from '../../utils/constants/fontSize';
 
-const HeaderTitle = ({title, isSeeAll}) => {
+const HeaderTitle = ({title, isSeeAll, navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>{title}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Articles')}>
         <Text style={styles.headingLink}>{isSeeAll ? 'See All' : ''}</Text>
       </TouchableOpacity>
     </View>

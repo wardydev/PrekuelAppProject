@@ -12,7 +12,7 @@ const Explores = ({navigation}) => {
   const url =
     'https://prekuel.com/wp-json/wp/v2/posts?categories=38&per_page=5';
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <WrapperScreen>
         <HeadingScreen heading="Explores" paragraph="Explore your news" />
         <TextInput style={styles.input} placeholder="Cari berita mu disini.." />
