@@ -5,8 +5,9 @@ import {renderCarousel} from '../../utils/functions/renderCarousel';
 
 // import DataCarousel from '../../utils/constants/DataCarousel';
 import useFetch from '../../hooks/useFetch';
+import CarouselItem from './CarouselItem';
 
-const CarouseBanner = () => {
+const CarouseBanner = ({navigation}) => {
   const carouselRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
@@ -24,7 +25,9 @@ const CarouseBanner = () => {
       <Carousel
         ref={carouselRef}
         data={data && data}
-        renderItem={renderCarousel}
+        renderItem={({item, i}) => (
+          <CarouselItem navigation={navigation} data={item && item} key={i} />
+        )}
         sliderWidth={windowWidth}
         itemWidth={300}
         loop={true}

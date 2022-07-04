@@ -17,7 +17,7 @@ const Home = ({navigation}) => {
           paragraph="Banyak update berita terbaru disini"
         />
       </WrapperScreen>
-      <CarouseBanner />
+      <CarouseBanner navigation={navigation} />
       <WrapperScreen>
         <HeaderTitle title="Terbaru" isSeeAll={true} />
         <ArticleLists navigation={navigation} url={url} />
