@@ -2,12 +2,7 @@ import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import Articles from '../screens/Articles';
-import Screen1 from '../screens/test/Screen1';
-import Screen2 from '../screens/test/Screen2';
-import Screen3 from '../screens/test/Screen3';
-import Screen4 from '../screens/test/Screen4';
-import Screen5 from '../screens/test/Screen5';
-import Screen6 from '../screens/test/Screen6';
+import Categories from '../screens/Categories';
 
 const Top = createMaterialTopTabNavigator();
 
@@ -24,29 +19,29 @@ const TopNavigation = () => {
         component={Articles}
       />
       <Top.Screen
-        options={{tabBarLabel: 'Dc'}}
-        name="Screen2"
-        component={Screen2}
+        options={{tabBarLabel: 'Movie'}}
+        name="Movie"
+        component={Categories}
       />
       <Top.Screen
-        options={{tabBarLabel: 'Disney+'}}
-        name="Screen3"
-        component={Screen3}
+        options={{tabBarLabel: 'Serial TV'}}
+        name="SerialTV"
+        component={Categories}
       />
       <Top.Screen
         options={{tabBarLabel: 'K-Drama'}}
-        name="Screen4"
-        component={Screen4}
+        name="KDrama"
+        component={Categories}
       />
       <Top.Screen
         options={{tabBarLabel: 'Netflix'}}
-        name="Screen5"
-        component={Screen5}
+        name="Netflix"
+        component={Categories}
       />
       <Top.Screen
-        options={{tabBarLabel: 'Movie News'}}
-        name="Screen6"
-        component={Screen6}
+        options={{tabBarLabel: 'Disney+'}}
+        name="Disney"
+        component={Categories}
       />
     </Top.Navigator>
   );
