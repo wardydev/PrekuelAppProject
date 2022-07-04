@@ -14,10 +14,7 @@ import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 import useFetch from '../../hooks/useFetch';
 
-const ArticleLists = ({isCategory, navigation}) => {
-  const url = isCategory
-    ? 'https://prekuel.com/wp-json/wp/v2/posts?categories=28&per_page=5'
-    : 'https://prekuel.com/wp-json/wp/v2/posts?per_page=5';
+const ArticleLists = ({navigation, url}) => {
   const {data, loading, error} = useFetch(url);
 
   const renderItem = ({item}) => {

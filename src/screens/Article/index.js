@@ -8,8 +8,7 @@ import {paragraph} from '../../utils/constants/DummyParagraph';
 import {blackColor, h1, primaryFont} from '../../utils/constants/fontSize';
 
 const Article = ({route}) => {
-  const {itemId, title, thumbnail, authorImage, authorName, date} =
-    route.params;
+  const {title, thumbnail, authorImage, authorName, date} = route.params;
   console.log(title);
   return (
     <ScrollView>

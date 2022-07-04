@@ -8,7 +8,9 @@ import TagCategories from '../../components/TagCategories';
 import HeaderTitle from '../../components/HeaderTitle';
 import ArticleList from '../../components/ArticleLists';
 
-const Explores = () => {
+const Explores = ({navigation}) => {
+  const url =
+    'https://prekuel.com/wp-json/wp/v2/posts?categories=38&per_page=5';
   return (
     <ScrollView>
       <WrapperScreen>
@@ -16,7 +18,7 @@ const Explores = () => {
         <TextInput style={styles.input} placeholder="Cari berita mu disini.." />
         <TagCategories />
         <HeaderTitle isSeeAll={true} title="Rekomendasi" />
-        <ArticleList />
+        <ArticleList url={url} navigation={navigation} />
       </WrapperScreen>
     </ScrollView>
   );

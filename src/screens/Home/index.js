@@ -8,6 +8,7 @@ import ArticleLists from '../../components/ArticleLists';
 import HeadingScreen from '../../components/atomic/HeadingScreen';
 
 const Home = ({navigation}) => {
+  const url = 'https://prekuel.com/wp-json/wp/v2/posts?per_page=10';
   return (
     <ScrollView>
       <WrapperScreen>
@@ -19,7 +20,7 @@ const Home = ({navigation}) => {
       <CarouseBanner />
       <WrapperScreen>
         <HeaderTitle title="Terbaru" isSeeAll={true} />
-        <ArticleLists navigation={navigation} />
+        <ArticleLists navigation={navigation} url={url} />
       </WrapperScreen>
     </ScrollView>
   );

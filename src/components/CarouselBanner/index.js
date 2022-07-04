@@ -12,7 +12,7 @@ const CarouseBanner = () => {
   const windowWidth = Dimensions.get('window').width;
 
   const {data, loading, error} = useFetch(
-    'https://prekuel.com/wp-json/wp/v2/posts?per_page=4',
+    'https://prekuel.com/wp-json/wp/v2/posts?categories=42&per_page=3',
   );
 
   if (loading) {
