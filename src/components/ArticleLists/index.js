@@ -13,11 +13,15 @@ import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 import useFetch from '../../hooks/useFetch';
+import PostArticles from '../PostArticles';
 
 const ArticleLists = ({navigation, url}) => {
   const {data, loading, error} = useFetch(url);
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item, index}) => {
+    if (index === 2) {
+      return <PostArticles navigation={navigation} />;
+    }
     return (
       <TouchableOpacity
         style={styles.container}
