@@ -35,6 +35,7 @@ const ArticleLists = ({navigation, url}) => {
               item.yoast_head_json.schema['@graph'][4]['image']['url'],
             authorName: item.yoast_head_json.twitter_misc['Written by'],
             date: item.yoast_head_json.twitter_misc['Est. reading time'],
+            source: item.content.rendered,
           })
         }>
         <Image
@@ -64,20 +65,11 @@ const ArticleLists = ({navigation, url}) => {
     return <Text style={{backgroundColor: 'red'}}>Loading...</Text>;
   }
 
-  const getHeader = () => {
-    return <Text>Header</Text>;
-  };
-  const getFooter = () => {
-    return <Text>Footer</Text>;
-  };
-
   return (
     <FlatList
-      LisHeaderComponent={getHeader}
       data={data && data}
       renderItem={renderItem}
       keyExtractor={item => item.id}
-      ListFooterComponent={getFooter}
     />
   );
 };

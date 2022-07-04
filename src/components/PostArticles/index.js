@@ -1,7 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {renderPostCarousel} from '../../utils/functions/renderPostCarousel';
 
 import useFetch from '../../hooks/useFetch';
 import PostItem from './PostItem';

@@ -17,6 +17,7 @@ const CarouselItem = ({data, navigation}) => {
           authorImage: data.yoast_head_json.schema['@graph'][4]['image']['url'],
           authorName: data.yoast_head_json.twitter_misc['Written by'],
           date: data.yoast_head_json.twitter_misc['Est. reading time'],
+          source: data.content.rendered,
         })
       }
       style={styles.container}>

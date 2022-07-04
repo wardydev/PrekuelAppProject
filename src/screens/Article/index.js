@@ -1,15 +1,82 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useWindowDimensions} from 'react-native';
+import RenderHtml from 'react-native-render-html';
+
 import AutorTitle from '../../components/atomic/AutorTitle';
 import TimeList from '../../components/atomic/TimeList';
 import WrapperScreen from '../../components/WrapperScreen';
-import {paragraph} from '../../utils/constants/DummyParagraph';
-import {blackColor, h1, primaryFont} from '../../utils/constants/fontSize';
+import {
+  blackColor,
+  h1,
+  primaryColor,
+  primaryFont,
+} from '../../utils/constants/fontSize';
+
+const tagsStyles = {
+  a: {
+    color: primaryColor,
+  },
+  p: {
+    fontSize: 17,
+    lineHeight: 28,
+    color: '#8F8F8F',
+  },
+  li: {
+    fontSize: 17,
+    lineHeight: 28,
+    color: '#8F8F8F',
+  },
+  ul: {
+    fontSize: 17,
+    lineHeight: 28,
+    color: '#8F8F8F',
+  },
+  script: {
+    display: 'none',
+  },
+  ins: {
+    display: 'none',
+  },
+  h3: {
+    fontSize: 22,
+    color: '#545454',
+  },
+  h4: {
+    fontSize: 22,
+    color: '#545454',
+  },
+  h5: {
+    fontSize: 22,
+    color: '#545454',
+  },
+  h1: {
+    fontSize: 26,
+    color: blackColor,
+  },
+  h2: {
+    fontSize: 26,
+    color: blackColor,
+  },
+  img: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
+};
+
+const renderersProps = {
+  img: {
+    enableExperimentalPercentWidth: true,
+  },
+};
 
 const Article = ({route}) => {
-  const {title, thumbnail, authorImage, authorName, date} = route.params;
-  console.log(title);
+  const {title, thumbnail, authorImage, authorName, date, source} =
+    route.params;
+  const {width} = useWindowDimensions();
+
   return (
     <ScrollView>
       <WrapperScreen>
@@ -38,7 +105,12 @@ const Article = ({route}) => {
               uri: thumbnail && thumbnail,
             }}
           />
-          <Text style={styles.contentParagraph}>{paragraph}</Text>
+          <RenderHtml
+            contentWidth={width}
+            source={{html: source && source}}
+            tagsStyles={tagsStyles}
+            renderersProps={renderersProps}
+          />
         </View>
       </WrapperScreen>
     </ScrollView>
@@ -59,7 +131,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  contentContainer: {},
+  contentContainer: {
+    overflow: 'hidden',
+  },
   heading: {
     fontSize: h1,
     fontWeight: 'bold',
