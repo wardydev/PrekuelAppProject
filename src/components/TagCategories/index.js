@@ -1,27 +1,37 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {primaryColor} from '../../utils/constants/fontSize';
+import {View, Text, Image, StyleSheet} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {primaryFont} from '../../utils/constants/fontSize';
 
-const TagCategories = () => {
+const TagCategories = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.tagCategory}>
-        <Text style={styles.textCategory}>Marvel</Text>
+    <View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Articles')}
+        style={styles.container}>
+        <Image
+          style={styles.imageStyle}
+          source={require('../../assets/images/category/marvel.jpg')}
+        />
+        <Text style={styles.textStyle}>Marvel</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.tagCategory}>
-        <Text style={styles.textCategory}>Disney+</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Movie')}
+        style={styles.container}>
+        <Image
+          style={styles.imageStyle}
+          source={require('../../assets/images/category/kdrama.jpg')}
+        />
+        <Text style={styles.textStyle}>K-Drama</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.tagCategory}>
-        <Text style={styles.textCategory}>Netflix</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tagCategory}>
-        <Text style={styles.textCategory}>K-Drama</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tagCategory}>
-        <Text style={styles.textCategory}>Film Indo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tagCategory}>
-        <Text style={styles.textCategory}>Genre Action</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Netflix')}
+        style={styles.container}>
+        <Image
+          style={styles.imageStyle}
+          source={require('../../assets/images/category/netflix.jpg')}
+        />
+        <Text style={styles.textStyle}>Netflix</Text>
       </TouchableOpacity>
     </View>
   );
@@ -29,24 +39,30 @@ const TagCategories = () => {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    marginBottom: 16,
+    position: 'relative',
+    flex: 1,
+    height: 112,
+    borderRadius: 12,
+    backgroundColor: 'gray',
+    marginBottom: 18,
+    overflow: 'hidden',
   },
-  tagCategory: {
-    backgroundColor: '#FFE1E2',
-    width: 'auto',
-    paddingHorizontal: 8,
-    paddingVertical: 10,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 12,
-    marginBottom: 12,
+  imageStyle: {
+    width: 350,
+    height: 112,
+    flex: 1,
+    zIndex: 99,
   },
-  textCategory: {
-    color: primaryColor,
+  textStyle: {
+    position: 'absolute',
+    top: 50,
+    flex: 1,
+    alignSelf: 'center',
+    zIndex: 99,
+    color: 'white',
+    fontSize: 24,
+    fontFamily: primaryFont,
+    fontWeight: 'bold',
   },
 });
 

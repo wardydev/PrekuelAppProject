@@ -16,7 +16,7 @@ const Explores = ({navigation}) => {
       <WrapperScreen>
         <HeadingScreen heading="Explores" paragraph="Explore your news" />
         <TextInput style={styles.input} placeholder="Cari berita mu disini.." />
-        <TagCategories />
+        <TagCategories navigation={navigation} />
         <HeaderTitle isSeeAll={true} title="Rekomendasi" />
         <ArticleList url={url} navigation={navigation} isPost={false} />
       </WrapperScreen>
