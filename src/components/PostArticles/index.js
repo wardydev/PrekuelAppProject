@@ -1,11 +1,12 @@
 import React, {useState, useRef} from 'react';
-import {View, Dimensions, StyleSheet} from 'react-native';
+import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {renderPostCarousel} from '../../utils/functions/renderPostCarousel';
 
 import useFetch from '../../hooks/useFetch';
+import PostItem from './PostItem';
 
-const PostArticles = () => {
+const PostArticles = ({navigation}) => {
   const postRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
@@ -13,12 +14,16 @@ const PostArticles = () => {
     'https://prekuel.com/wp-json/wp/v2/posts?categories=42&per_page=3',
   );
 
+  if (loading) return <Text style={{backgroundColor: 'red'}}>Loading...</Text>;
+
   return (
     <View style={styles.postContainer}>
       <Carousel
         ref={postRef}
         data={data && data}
-        renderItem={renderPostCarousel}
+        renderItem={({item, i}) => (
+          <PostItem navigation={navigation} data={item} key={i} />
+        )}
         sliderWidth={windowWidth}
         itemWidth={300}
         loop={true}

@@ -12,9 +12,9 @@ const Articles = ({navigation}) => {
     'https://prekuel.com/wp-json/wp/v2/posts?categories=28&per_page=5';
   return (
     <ScrollView style={styles.container}>
-      <PostArticles />
+      <PostArticles navigation={navigation} />
       <WrapperScreen>
-        <HeaderTitle title="Reading List" isSeeAll={true} />
+        <HeaderTitle title="Marvel News" isSeeAll={true} />
         <ArticleLists navigation={navigation} url={url} />
       </WrapperScreen>
     </ScrollView>

@@ -5,9 +5,21 @@ import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 
-const PostItem = ({data}) => {
+const PostItem = ({data, navigation}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('Article', {
+          itemId: data.id,
+          title: data.title.rendered,
+          thumbnail:
+            data.better_featured_image.media_details.sizes.medium.source_url,
+          authorImage: data.yoast_head_json.schema['@graph'][4]['image']['url'],
+          authorName: data.yoast_head_json.twitter_misc['Written by'],
+          date: data.yoast_head_json.twitter_misc['Est. reading time'],
+        })
+      }
+      style={styles.container}>
       <View style={styles.headerPostContainer}>
         <View style={styles.headerProfile}>
           <Image
