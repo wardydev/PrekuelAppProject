@@ -20,7 +20,7 @@ const Home = ({navigation}) => {
       <CarouseBanner navigation={navigation} />
       <WrapperScreen>
         <HeaderTitle title="Terbaru" isSeeAll={true} />
-        <ArticleLists navigation={navigation} url={url} />
+        <ArticleLists navigation={navigation} url={url} isPost={true} />
       </WrapperScreen>
     </ScrollView>
   );

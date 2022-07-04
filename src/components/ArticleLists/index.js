@@ -15,11 +15,11 @@ import TitleList from '../atomic/TitleList';
 import useFetch from '../../hooks/useFetch';
 import PostArticles from '../PostArticles';
 
-const ArticleLists = ({navigation, url}) => {
+const ArticleLists = ({navigation, url, isPost}) => {
   const {data, loading, error} = useFetch(url);
 
   const renderItem = ({item, index}) => {
-    if (index === 2) {
+    if (index === 2 && isPost === true) {
       return <PostArticles navigation={navigation} />;
     }
     return (

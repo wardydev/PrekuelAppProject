@@ -18,7 +18,7 @@ const Explores = ({navigation}) => {
         <TextInput style={styles.input} placeholder="Cari berita mu disini.." />
         <TagCategories />
         <HeaderTitle isSeeAll={true} title="Rekomendasi" />
-        <ArticleList url={url} navigation={navigation} />
+        <ArticleList url={url} navigation={navigation} isPost={false} />
       </WrapperScreen>
     </ScrollView>
   );

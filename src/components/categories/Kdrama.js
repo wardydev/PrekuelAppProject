@@ -8,7 +8,7 @@ const Kdrama = ({navigation}) => {
     'https://prekuel.com/wp-json/wp/v2/posts?categories=30&per_page=30';
   return (
     <WrapperScreen>
-      <ArticleLists navigation={navigation} url={url} />
+      <ArticleLists navigation={navigation} url={url} isPost={false} />
     </WrapperScreen>
   );
 };
