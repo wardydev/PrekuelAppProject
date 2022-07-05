@@ -1,6 +1,10 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
-import {primaryFont, secondaryColor} from '../../utils/constants/fontSize';
+import {
+  primaryColor,
+  primaryFont,
+  secondaryColor,
+} from '../../utils/constants/fontSize';
 
 const AutorTitle = ({author, isLarge}) => {
   return (
@@ -16,12 +20,14 @@ const styles = StyleSheet.create({
     color: secondaryColor,
     fontFamily: primaryFont,
     fontSize: 16,
+    fontWeight: '500',
   },
   authorListLarge: {
     marginRight: 12,
-    color: secondaryColor,
+    color: primaryColor,
     fontFamily: primaryFont,
     fontSize: 18,
+    fontWeight: '500',
   },
 });
 

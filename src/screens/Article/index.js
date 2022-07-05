@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import AutorTitle from '../../components/atomic/AutorTitle';
 import TimeList from '../../components/atomic/TimeList';
@@ -95,7 +96,7 @@ const Article = ({route}) => {
                 <TimeList minutes={date && date} />
               </View>
             </View>
-            <View style={styles.shareIcon}></View>
+            <Icon name="share" size={26} color="#31539E" />
           </View>
         </View>
         <View style={styles.contentContainer}>

@@ -5,7 +5,7 @@ import {primaryFont} from '../../utils/constants/fontSize';
 
 const TagCategories = ({navigation}) => {
   return (
-    <View>
+    <View style={{marginBottom: 16}}>
       <TouchableOpacity
         onPress={() => navigation.navigate('Articles')}
         style={styles.container}>
