@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
-const useFetch = url => {
+const useFetch = (url, search) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -21,7 +21,7 @@ const useFetch = url => {
   useEffect(() => {
     fetchDataAPI();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url]);
+  }, [url, search]);
 
   return {data, loading, error};
 };

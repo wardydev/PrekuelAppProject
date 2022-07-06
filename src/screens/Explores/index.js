@@ -8,14 +8,17 @@ import TagCategories from '../../components/TagCategories';
 import HeaderTitle from '../../components/HeaderTitle';
 import ArticleList from '../../components/ArticleLists';
 import useFetch from '../../hooks/useFetch';
+import {FlatList} from 'react-native-gesture-handler';
+import ArticleSearch from '../../components/ArticleSearch';
 
 const Explores = ({navigation}) => {
-  const {data, loading, error} = useFetch(
-    'https://prekuel.com/wp-json/wp/v2/posts?per_page=100',
-  );
-  const [dataFiltered, setDataFiltered] = useState();
   const [isSearch, setIsSearch] = useState(false);
   const [search, setSearch] = useState('');
+  const {data, loading, error} = useFetch(
+    'https://prekuel.com/wp-json/wp/v2/posts?per_page=100',
+    search,
+  );
+  const [dataFiltered, setDataFiltered] = useState();
 
   const filteredData = text => {
     setSearch(text);
@@ -34,12 +37,13 @@ const Explores = ({navigation}) => {
           item.content.rendered.toLowerCase().includes(text)
         );
       });
-      setDataFiltered(newData);
+      setDataFiltered(newData && newData);
     }
   };
 
   const url =
     'https://prekuel.com/wp-json/wp/v2/posts?categories=38&per_page=5';
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <WrapperScreen>
@@ -51,7 +55,7 @@ const Explores = ({navigation}) => {
           value={search}
         />
         {isSearch ? (
-          <Text style={{backgroundColor: 'green'}}>Search result..</Text>
+          <ArticleSearch dataFiltered={dataFiltered} navigation={navigation} />
         ) : (
           <View>
             <TagCategories navigation={navigation} />
