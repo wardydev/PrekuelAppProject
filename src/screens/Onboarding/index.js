@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  Image,
 } from 'react-native';
 
 import {dataBoarding} from './dataBoarding';
@@ -75,6 +76,7 @@ const Onboarding = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
+              <Image source={require('../../assets/svg/movie.svg')} />
               <Text>{item.title}</Text>
             </View>
           )}
@@ -89,6 +91,23 @@ const Onboarding = ({navigation}) => {
         <TouchableOpacity onPress={handleBack}>
           <Text>Prev</Text>
         </TouchableOpacity>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          {
+            // No. of dots
+            [...Array(dataBoarding.length)].map((_, index) => (
+              <View
+                key={index}
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  backgroundColor: index == currentPage ? 'red' : 'grey',
+                  marginRight: 8,
+                }}
+              />
+            ))
+          }
+        </View>
         <TouchableOpacity style={styles.btnNavigation} onPress={handleNext}>
           {isDoneBtn ? <Text>Done</Text> : <Text>Next</Text>}
         </TouchableOpacity>
