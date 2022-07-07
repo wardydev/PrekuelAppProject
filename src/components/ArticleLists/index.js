@@ -7,6 +7,7 @@ import {
   FlatList,
   Text,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import AutorTitle from '../atomic/AutorTitle';
 import TagTitle from '../atomic/TagTitle';
@@ -15,8 +16,9 @@ import TitleList from '../atomic/TitleList';
 import useFetch from '../../hooks/useFetch';
 import PostArticles from '../PostArticles';
 
-const ArticleLists = ({navigation, url, isPost}) => {
+const ArticleLists = ({url, isPost}) => {
   const {data, loading, error} = useFetch(url);
+  const navigation = useNavigation();
 
   const renderItem = ({item, index}) => {
     if (index === 2 && isPost === true) {

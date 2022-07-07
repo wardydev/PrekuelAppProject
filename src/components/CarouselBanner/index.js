@@ -1,13 +1,11 @@
 import React, {useState, useRef} from 'react';
 import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {renderCarousel} from '../../utils/functions/renderCarousel';
 
-// import DataCarousel from '../../utils/constants/DataCarousel';
 import useFetch from '../../hooks/useFetch';
 import CarouselItem from './CarouselItem';
 
-const CarouseBanner = ({navigation}) => {
+const CarouseBanner = () => {
   const carouselRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
@@ -25,9 +23,7 @@ const CarouseBanner = ({navigation}) => {
       <Carousel
         ref={carouselRef}
         data={data && data}
-        renderItem={({item, i}) => (
-          <CarouselItem navigation={navigation} data={item && item} key={i} />
-        )}
+        renderItem={({item, i}) => <CarouselItem data={item && item} key={i} />}
         sliderWidth={windowWidth}
         itemWidth={300}
         loop={true}

@@ -5,7 +5,7 @@ import Carousel, {Pagination} from 'react-native-snap-carousel';
 import useFetch from '../../hooks/useFetch';
 import PostItem from './PostItem';
 
-const PostArticles = ({navigation}) => {
+const PostArticles = () => {
   const postRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
@@ -20,9 +20,7 @@ const PostArticles = ({navigation}) => {
       <Carousel
         ref={postRef}
         data={data && data}
-        renderItem={({item, i}) => (
-          <PostItem navigation={navigation} data={item} key={i} />
-        )}
+        renderItem={({item, i}) => <PostItem data={item} key={i} />}
         sliderWidth={windowWidth}
         itemWidth={300}
         loop={true}

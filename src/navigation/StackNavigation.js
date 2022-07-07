@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native';
+import {Image, View, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Explores from '../screens/Explores';
@@ -7,26 +7,39 @@ import Article from '../screens/Article';
 
 import TabNavigation from './TabNavigation';
 import TopNavigation from './TopNavigation';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
 
 function LogoTitle() {
   return (
     <Image
-      style={{width: 150, height: 50}}
+      style={{width: 160, height: 50}}
       source={require('../assets/logoMd.png')}
     />
   );
 }
 
 const StackNavigation = () => {
+  const navigation = useNavigation();
+
   return (
     <Stack.Navigator>
       <Stack.Screen
         options={{
-          headerTitle: props => <LogoTitle {...props} />,
+          headerTitle: props => (
+            <View style={styles.container}>
+              <View></View>
+              <LogoTitle {...props} />
+              <TouchableOpacity onPress={() => navigation.navigate('Explores')}>
+                <Icon name="search" size={26} color="#E31E26" />
+              </TouchableOpacity>
+            </View>
+          ),
           headerTitleAlign: 'center',
-          headerStyle: {backgroundColor: '#F8F9FA'},
+          headerStyle: {backgroundColor: '#f8f9fa'},
           headerShown: true,
         }}
         name="Tab"
@@ -42,5 +55,15 @@ const StackNavigation = () => {
     </Stack.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+});
 
 export default StackNavigation;

@@ -12,6 +12,7 @@ const TopNavigation = () => {
       screenOptions={{
         tabBarScrollEnabled: true,
         tabBarItemStyle: {width: 100},
+        tabBarPressColor: '#f8f9fa',
       }}>
       <Top.Screen
         options={{tabBarLabel: 'Marvel'}}

@@ -1,9 +1,13 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
+
 import {primaryFont} from '../../utils/constants/fontSize';
 
-const TagCategories = ({navigation}) => {
+const TagCategories = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={{marginBottom: 16}}>
       <TouchableOpacity
@@ -16,7 +20,7 @@ const TagCategories = ({navigation}) => {
         <Text style={styles.textStyle}>Marvel</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Movie')}
+        onPress={() => navigation.navigate('KDrama')}
         style={styles.container}>
         <Image
           style={styles.imageStyle}

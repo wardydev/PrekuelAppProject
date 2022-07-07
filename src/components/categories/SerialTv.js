@@ -10,7 +10,7 @@ const SerialTv = ({navigation}) => {
   return (
     <WrapperScreen>
       <HeaderTitle title="Serial TV news" />
-      <ArticleLists navigation={navigation} url={url} isPost={false} />
+      <ArticleLists url={url} isPost={false} />
     </WrapperScreen>
   );
 };

@@ -1,9 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {h3, aLink} from '../../utils/constants/fontSize';
 
-const HeaderTitle = ({title, isSeeAll, navigation}) => {
+const HeaderTitle = ({title, isSeeAll}) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>{title}</Text>

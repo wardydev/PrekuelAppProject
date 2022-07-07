@@ -12,14 +12,19 @@ const Home = ({navigation}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <WrapperScreen>
-        <HeadingScreen
-          heading="Welcome to prekuel App"
-          paragraph="Banyak update berita terbaru disini"
+        <HeaderTitle
+          title="Trending"
+          isSeeAll={false}
+          navigation={navigation}
         />
       </WrapperScreen>
       <CarouseBanner navigation={navigation} />
       <WrapperScreen>
-        <HeaderTitle title="Terbaru" isSeeAll={true} navigation={navigation} />
+        <HeaderTitle
+          title="Post Terbaru"
+          isSeeAll={true}
+          navigation={navigation}
+        />
         <ArticleLists navigation={navigation} url={url} isPost={true} />
       </WrapperScreen>
     </ScrollView>

@@ -1,11 +1,14 @@
 import React from 'react';
 import {TouchableOpacity, Image, StyleSheet, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
 
 import {primaryFont} from '../../utils/constants/fontSize';
 import {getSomeStringArticleTitle} from '../../utils/functions/getSomeString';
 
-const CarouselItem = ({data, navigation}) => {
+const CarouselItem = ({data}) => {
+  const navigation = useNavigation();
+
   return (
     <TouchableOpacity
       onPress={() =>
@@ -28,7 +31,7 @@ const CarouselItem = ({data, navigation}) => {
         }}
       />
       <LinearGradient
-        colors={['#1E346455', '#1E3464']}
+        colors={['#1E346411', '#121212']}
         style={styles.linearGradient}>
         <Text style={styles.titleCarousel}>
           {getSomeStringArticleTitle(data.title.rendered)}
@@ -44,6 +47,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     borderRadius: 16,
     overflow: 'hidden',
+    backgroundColor: '#F8F9FA',
   },
   imageItem: {
     height: 160,

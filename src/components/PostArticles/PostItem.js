@@ -1,11 +1,14 @@
 import React from 'react';
 import {TouchableOpacity, Image, StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 
-const PostItem = ({data, navigation}) => {
+const PostItem = ({data}) => {
+  const navigation = useNavigation();
+
   return (
     <TouchableOpacity
       onPress={() =>

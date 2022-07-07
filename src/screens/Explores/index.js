@@ -59,7 +59,11 @@ const Explores = ({navigation}) => {
         ) : (
           <View>
             <TagCategories navigation={navigation} />
-            <HeaderTitle isSeeAll={true} title="Rekomendasi" />
+            <HeaderTitle
+              isSeeAll={true}
+              title="Rekomendasi"
+              navigation={navigation}
+            />
             <ArticleList url={url} navigation={navigation} isPost={false} />
           </View>
         )}

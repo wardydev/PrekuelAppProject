@@ -6,12 +6,16 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
 import AutorTitle from '../atomic/AutorTitle';
 import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 
-const ArticleSearch = ({dataFiltered, navigation}) => {
+const ArticleSearch = ({dataFiltered}) => {
+  const navigation = useNavigation();
+
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
