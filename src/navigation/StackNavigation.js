@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Explores from '../screens/Explores';
@@ -10,6 +10,7 @@ import TopNavigation from './TopNavigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import Onboarding from '../screens/Onboarding';
 
 const Stack = createStackNavigator();
 
@@ -28,10 +29,15 @@ const StackNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        options={{headerShown: false}}
+        name="Onboarding"
+        component={Onboarding}
+      />
+      <Stack.Screen
         options={{
           headerTitle: props => (
             <View style={styles.container}>
-              <View></View>
+              <Text></Text>
               <LogoTitle {...props} />
               <TouchableOpacity onPress={() => navigation.navigate('Explores')}>
                 <Icon name="search" size={26} color="#E31E26" />
@@ -41,6 +47,7 @@ const StackNavigation = () => {
           headerTitleAlign: 'center',
           headerStyle: {backgroundColor: '#f8f9fa'},
           headerShown: true,
+          headerLeft: null,
         }}
         name="Tab"
         component={TabNavigation}
