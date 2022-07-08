@@ -8,10 +8,16 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
+import {
+  blackColor,
+  grayColor,
+  primaryColor,
+  primaryFont,
+} from '../../utils/constants/fontSize';
 
 import {dataBoarding} from './dataBoarding';
 
-const {width} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const Onboarding = ({navigation}) => {
   const flatlistRef = useRef();
@@ -54,6 +60,31 @@ const Onboarding = ({navigation}) => {
     navigation.navigate('Tab');
   };
 
+  const renderItem = ({item}) => {
+    return (
+      <View
+        style={{
+          width: width,
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Image
+          source={item.img}
+          style={{
+            width: 191,
+            height: 150,
+            marginBottom: 20,
+          }}
+        />
+        <View style={styles.headingContainer}>
+          <Text style={styles.heading}>{item.heading}</Text>
+          <Text style={styles.subHeading}>{item.subHeading}</Text>
+        </View>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -68,18 +99,7 @@ const Onboarding = ({navigation}) => {
           pagingEnabled
           horizontal
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => (
-            <View
-              style={{
-                width: width,
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Image source={require('../../assets/svg/movie.svg')} />
-              <Text>{item.title}</Text>
-            </View>
-          )}
+          renderItem={renderItem}
           keyExtractor={item => item.id}
           ref={flatlistRef}
           onViewableItemsChanged={handleViewableItemsChanged.current}
@@ -88,10 +108,12 @@ const Onboarding = ({navigation}) => {
         />
       </View>
       <View style={styles.footerContainer}>
-        <TouchableOpacity onPress={handleBack}>
-          <Text>Prev</Text>
-        </TouchableOpacity>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 26,
+          }}>
           {
             // No. of dots
             [...Array(dataBoarding.length)].map((_, index) => (
@@ -108,9 +130,41 @@ const Onboarding = ({navigation}) => {
             ))
           }
         </View>
-        <TouchableOpacity style={styles.btnNavigation} onPress={handleNext}>
-          {isDoneBtn ? <Text>Done</Text> : <Text>Next</Text>}
-        </TouchableOpacity>
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.btnNavigation} onPress={handleNext}>
+            {isDoneBtn ? (
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: primaryFont,
+                  fontWeight: 'bold',
+                }}>
+                Done
+              </Text>
+            ) : (
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: primaryFont,
+                  fontWeight: 'bold',
+                }}>
+                Next
+              </Text>
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.prevBtn} onPress={handleBack}>
+            {currentPage > 0 && (
+              <Text
+                style={{
+                  color: grayColor,
+                  fontFamily: primaryFont,
+                  fontWeight: 'bold',
+                }}>
+                Prev
+              </Text>
+            )}
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -120,14 +174,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
+    backgroundColor: '#f8f9fa',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
   },
   footerContainer: {
     width: '100%',
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'flex-end',
   },
   headerContainer: {
     width: '100%',
@@ -136,10 +191,45 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  headingContainer: {
+    width: width,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnContainer: {
+    paddingHorizontal: 20,
+  },
   btnNavigation: {
-    backgroundColor: 'green',
+    backgroundColor: primaryColor,
     paddingHorizontal: 12,
-    paddingVertical: 6,
+    width: 300,
+    height: 56,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+  },
+  heading: {
+    fontSize: 30,
+    color: blackColor,
+    fontFamily: primaryFont,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'center',
+    marginBottom: 12,
+  },
+  subHeading: {
+    textAlign: 'center',
+    fontSize: 18,
+    width: '70%',
+  },
+  prevBtn: {
+    paddingHorizontal: 12,
+    width: 300,
+    height: 56,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
   },
 });
 
