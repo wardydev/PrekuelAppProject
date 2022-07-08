@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, View, StyleSheet, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Explores from '../screens/Explores';
 import Article from '../screens/Article';
 
 import TabNavigation from './TabNavigation';
 import TopNavigation from './TopNavigation';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import Onboarding from '../screens/Onboarding';
 
 const Stack = createStackNavigator();
@@ -25,14 +26,26 @@ function LogoTitle() {
 
 const StackNavigation = () => {
   const navigation = useNavigation();
+  const [isBoarded, setIsBoarded] = useState(null);
+
+  useEffect(() => {
+    const getAsyncStorage = async () => {
+      const storage = await AsyncStorage.getItem('onboarded');
+      setIsBoarded(storage);
+    };
+
+    getAsyncStorage();
+  }, []);
 
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        options={{headerShown: false}}
-        name="Onboarding"
-        component={Onboarding}
-      />
+      {isBoarded && (
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Onboarding"
+          component={Onboarding}
+        />
+      )}
       <Stack.Screen
         options={{
           headerTitle: props => (

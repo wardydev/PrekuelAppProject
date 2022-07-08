@@ -7,11 +7,7 @@ import {
   FlatList,
   Dimensions,
 } from 'react-native';
-import {
-  grayColor,
-  primaryColor,
-  primaryFont,
-} from '../../utils/constants/fontSize';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {dataBoarding} from './dataBoarding';
 import DotNavigation from './DotNavigation';
@@ -35,10 +31,11 @@ const Onboarding = ({navigation}) => {
     setCurrentPage(viewableItems[0].index);
   }, [viewableItems, currentPage]);
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentPage === dataBoarding.length - 2) {
       setIsDoneBtn(true);
     } else if (currentPage === dataBoarding.length - 1) {
+      await AsyncStorage.setItem('onboarded', 'true');
       navigation.navigate('Tab');
       return;
     }
