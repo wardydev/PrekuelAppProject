@@ -39,7 +39,11 @@ const TabNavigation = () => {
       })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Explores" component={Explores} />
-      <Tab.Screen name="Articles" component={TopNavigation} />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Articles"
+        component={TopNavigation}
+      />
     </Tab.Navigator>
   );
 };

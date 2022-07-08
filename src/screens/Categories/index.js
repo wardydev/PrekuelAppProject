@@ -9,12 +9,18 @@ import Kdrama from '../../components/categories/Kdrama';
 import Netflix from '../../components/categories/Netflix';
 import SerialTv from '../../components/categories/SerialTv';
 import {ScrollView} from 'react-native-gesture-handler';
+import All from '../../components/categories/All';
+import Marvel from '../../components/categories/Marvel';
 
 const Categories = ({navigation}) => {
   const route = useRoute();
 
   const categoryView = () => {
     switch (route.name) {
+      case 'All':
+        return <All navigation={navigation} />;
+      case 'Marvel':
+        return <Marvel navigation={navigation} />;
       case 'Movie':
         return <Movie navigation={navigation} />;
       case 'SerialTV':

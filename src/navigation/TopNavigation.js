@@ -3,6 +3,7 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 
 import Articles from '../screens/Articles';
 import Categories from '../screens/Categories';
+import All from '../components/categories/All';
 
 const Top = createMaterialTopTabNavigator();
 
@@ -14,10 +15,11 @@ const TopNavigation = () => {
         tabBarItemStyle: {width: 100},
         tabBarPressColor: '#f8f9fa',
       }}>
+      <Top.Screen options={{tabBarLabel: 'All'}} name="All" component={All} />
       <Top.Screen
         options={{tabBarLabel: 'Marvel'}}
         name="Marvel"
-        component={Articles}
+        component={Categories}
       />
       <Top.Screen
         options={{tabBarLabel: 'Movie'}}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
@@ -8,6 +8,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import AutorTitle from '../../components/atomic/AutorTitle';
 import TimeList from '../../components/atomic/TimeList';
 import WrapperScreen from '../../components/WrapperScreen';
+
+const {width} = Dimensions.get('window');
+
 import {
   blackColor,
   h1,
@@ -79,7 +82,7 @@ const Article = ({route}) => {
   const {width} = useWindowDimensions();
 
   return (
-    <ScrollView>
+    <ScrollView style={{width: width}} showsVerticalScrollIndicator={false}>
       <WrapperScreen>
         <View style={styles.headerContainer}>
           <Text style={styles.heading}>{title && title}</Text>
@@ -153,7 +156,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   contentImage: {
-    width: 327,
+    width: width,
     height: 214,
     borderRadius: 12,
     marginBottom: 24,
