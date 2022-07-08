@@ -6,18 +6,19 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
-  Image,
 } from 'react-native';
 import {
-  blackColor,
   grayColor,
   primaryColor,
   primaryFont,
 } from '../../utils/constants/fontSize';
 
 import {dataBoarding} from './dataBoarding';
+import DotNavigation from './DotNavigation';
+import FooterBoarding from './FooterBoarding';
+import ItemBoarding from './ItemBoarding';
 
-const {width, height} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const Onboarding = ({navigation}) => {
   const flatlistRef = useRef();
@@ -61,35 +62,15 @@ const Onboarding = ({navigation}) => {
   };
 
   const renderItem = ({item}) => {
-    return (
-      <View
-        style={{
-          width: width,
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Image
-          source={item.img}
-          style={{
-            width: 191,
-            height: 150,
-            marginBottom: 20,
-          }}
-        />
-        <View style={styles.headingContainer}>
-          <Text style={styles.heading}>{item.heading}</Text>
-          <Text style={styles.subHeading}>{item.subHeading}</Text>
-        </View>
-      </View>
-    );
+    return <ItemBoarding item={item} />;
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text></Text>
-        <TouchableOpacity onPress={handleSkipToEnd}>
+        <TouchableOpacity
+          style={{alignSelf: 'flex-end'}}
+          onPress={handleSkipToEnd}>
           <Text>skip</Text>
         </TouchableOpacity>
       </View>
@@ -108,63 +89,20 @@ const Onboarding = ({navigation}) => {
         />
       </View>
       <View style={styles.footerContainer}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginBottom: 26,
-          }}>
+        <View style={styles.dotContainer}>
           {
             // No. of dots
             [...Array(dataBoarding.length)].map((_, index) => (
-              <View
-                key={index}
-                style={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: 5,
-                  backgroundColor: index == currentPage ? 'red' : 'grey',
-                  marginRight: 8,
-                }}
-              />
+              <DotNavigation index={index} currentPage={currentPage} />
             ))
           }
         </View>
-        <View style={styles.btnContainer}>
-          <TouchableOpacity style={styles.btnNavigation} onPress={handleNext}>
-            {isDoneBtn ? (
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: primaryFont,
-                  fontWeight: 'bold',
-                }}>
-                Done
-              </Text>
-            ) : (
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: primaryFont,
-                  fontWeight: 'bold',
-                }}>
-                Next
-              </Text>
-            )}
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.prevBtn} onPress={handleBack}>
-            {currentPage > 0 && (
-              <Text
-                style={{
-                  color: grayColor,
-                  fontFamily: primaryFont,
-                  fontWeight: 'bold',
-                }}>
-                Prev
-              </Text>
-            )}
-          </TouchableOpacity>
-        </View>
+        <FooterBoarding
+          handleNext={handleNext}
+          handleBack={handleBack}
+          isDoneBtn={isDoneBtn}
+          currentPage={currentPage}
+        />
       </View>
     </View>
   );
@@ -175,21 +113,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#f8f9fa',
-    paddingVertical: 16,
-    paddingHorizontal: 24,
   },
   footerContainer: {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
   },
   headerContainer: {
     width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
   },
   headingContainer: {
     width: width,
@@ -197,39 +133,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  btnContainer: {
-    paddingHorizontal: 20,
-  },
-  btnNavigation: {
-    backgroundColor: primaryColor,
-    paddingHorizontal: 12,
-    width: 300,
-    height: 56,
-    justifyContent: 'center',
+  dotContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 8,
-  },
-  heading: {
-    fontSize: 30,
-    color: blackColor,
-    fontFamily: primaryFont,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    alignSelf: 'center',
-    marginBottom: 12,
-  },
-  subHeading: {
-    textAlign: 'center',
-    fontSize: 18,
-    width: '70%',
-  },
-  prevBtn: {
-    paddingHorizontal: 12,
-    width: 300,
-    height: 56,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 8,
+    marginBottom: 26,
   },
 });
 
