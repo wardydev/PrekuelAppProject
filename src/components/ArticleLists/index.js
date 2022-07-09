@@ -38,6 +38,7 @@ const ArticleLists = ({url, isPost}) => {
             authorName: item.yoast_head_json.twitter_misc['Written by'],
             date: item.date,
             source: item.content.rendered,
+            link: item.link,
           })
         }>
         <Image

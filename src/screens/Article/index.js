@@ -1,9 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Share from 'react-native-share';
 
 import AutorTitle from '../../components/atomic/AutorTitle';
 import TimeList from '../../components/atomic/TimeList';
@@ -77,9 +85,20 @@ const renderersProps = {
 };
 
 const Article = ({route}) => {
-  const {title, thumbnail, authorImage, authorName, date, source} =
-    route.params;
+  const {title, authorImage, authorName, date, source, link} = route.params;
   const {width} = useWindowDimensions();
+
+  const shareOption = async () => {
+    const options = {
+      message: link,
+    };
+
+    try {
+      await Share.open(options);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <ScrollView style={{width: width}} showsVerticalScrollIndicator={false}>
@@ -99,16 +118,12 @@ const Article = ({route}) => {
                 <TimeList minutes={date && date} />
               </View>
             </View>
-            <Icon name="share" size={26} color="#31539E" />
+            <TouchableOpacity onPress={shareOption}>
+              <Icon name="share" size={26} color="#31539E" />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.contentContainer}>
-          <Image
-            style={styles.contentImage}
-            source={{
-              uri: thumbnail && thumbnail,
-            }}
-          />
           <RenderHtml
             contentWidth={width}
             source={{html: source && source}}

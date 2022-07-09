@@ -21,6 +21,7 @@ const CarouselItem = ({data}) => {
           authorName: data.yoast_head_json.twitter_misc['Written by'],
           date: data.yoast_head_json.twitter_misc['Est. reading time'],
           source: data.content.rendered,
+          link: data.link,
         })
       }
       style={styles.container}>
