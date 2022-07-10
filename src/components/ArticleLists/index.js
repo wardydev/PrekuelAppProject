@@ -16,6 +16,7 @@ import useFetch from '../../hooks/useFetch';
 import PostArticles from '../PostArticles';
 import ArticleListsSkleton from '../skleton/ArticleListSkleton';
 import HeaderTitle from '../HeaderTitle';
+import ErrorSection from '../ErrorSection';
 
 const ArticleLists = ({url, isPost, titleHeader}) => {
   const {data, loading, error} = useFetch(url);
@@ -74,6 +75,10 @@ const ArticleLists = ({url, isPost, titleHeader}) => {
         <ArticleListsSkleton />
       </View>
     );
+  }
+
+  if (error) {
+    return <ErrorSection />;
   }
 
   return (

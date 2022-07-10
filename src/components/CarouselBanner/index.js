@@ -3,6 +3,7 @@ import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import useFetch from '../../hooks/useFetch';
+import ErrorSection from '../ErrorSection';
 import HeaderTitle from '../HeaderTitle';
 import BannerSkleton from '../skleton/BannerSkleton';
 import WrapperScreen from '../WrapperScreen';
@@ -23,6 +24,10 @@ const CarouseBanner = ({titleHeader}) => {
         <BannerSkleton />
       </WrapperScreen>
     );
+  }
+
+  if (error) {
+    return <ErrorSection />;
   }
 
   return (
