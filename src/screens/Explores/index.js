@@ -62,7 +62,7 @@ const Explores = ({navigation}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <WrapperScreen>
-        <HeadingScreen heading="Explores" paragraph="Explore your news" />
+        <HeadingScreen heading="Explores" paragraph="Cari Artikelmu Disini!" />
         <TextInput
           style={styles.input}
           placeholder="Cari berita mu disini.."

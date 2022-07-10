@@ -11,7 +11,7 @@ const HeaderTitle = ({title, isSeeAll}) => {
     <View style={styles.container}>
       <Text style={styles.heading}>{title}</Text>
       <TouchableOpacity onPress={() => navigation.navigate('Articles')}>
-        <Text style={styles.headingLink}>{isSeeAll ? 'See All' : ''}</Text>
+        <Text style={styles.headingLink}>{isSeeAll ? 'Lihat Semua' : ''}</Text>
       </TouchableOpacity>
     </View>
   );
