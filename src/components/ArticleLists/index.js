@@ -5,7 +5,6 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
-  Text,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -15,8 +14,10 @@ import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
 import useFetch from '../../hooks/useFetch';
 import PostArticles from '../PostArticles';
+import ArticleListsSkleton from '../skleton/ArticleListSkleton';
+import HeaderTitle from '../HeaderTitle';
 
-const ArticleLists = ({url, isPost}) => {
+const ArticleLists = ({url, isPost, titleHeader}) => {
   const {data, loading, error} = useFetch(url);
   const navigation = useNavigation();
 
@@ -64,15 +65,30 @@ const ArticleLists = ({url, isPost}) => {
   };
 
   if (loading) {
-    return <Text style={{backgroundColor: 'red'}}>Loading...</Text>;
+    return (
+      <View>
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+      </View>
+    );
   }
 
   return (
-    <FlatList
-      data={data && data}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
-    />
+    <View>
+      <HeaderTitle
+        title={titleHeader}
+        isSeeAll={true}
+        navigation={navigation}
+      />
+      <FlatList
+        data={data && data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </View>
   );
 };
 

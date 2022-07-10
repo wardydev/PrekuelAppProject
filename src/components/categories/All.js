@@ -2,7 +2,6 @@ import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import ArticleLists from '../ArticleLists';
-import HeaderTitle from '../HeaderTitle';
 import WrapperScreen from '../WrapperScreen';
 
 const All = () => {
@@ -10,8 +9,7 @@ const All = () => {
   return (
     <WrapperScreen>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <HeaderTitle title="All Categories" />
-        <ArticleLists url={url} isPost={false} />
+        <ArticleLists url={url} isPost={false} titleHeader={'Semua Kategori'} />
       </ScrollView>
     </WrapperScreen>
   );

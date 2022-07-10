@@ -3,9 +3,12 @@ import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import useFetch from '../../hooks/useFetch';
+import HeaderTitle from '../HeaderTitle';
+import BannerSkleton from '../skleton/BannerSkleton';
+import WrapperScreen from '../WrapperScreen';
 import CarouselItem from './CarouselItem';
 
-const CarouseBanner = () => {
+const CarouseBanner = ({titleHeader}) => {
   const carouselRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
@@ -15,11 +18,18 @@ const CarouseBanner = () => {
   );
 
   if (loading) {
-    return <Text style={{backgroundColor: 'red'}}>Loading..</Text>;
+    return (
+      <WrapperScreen>
+        <BannerSkleton />
+      </WrapperScreen>
+    );
   }
 
   return (
     <View>
+      <WrapperScreen>
+        <HeaderTitle title={titleHeader} isSeeAll={false} />
+      </WrapperScreen>
       <Carousel
         ref={carouselRef}
         data={data && data}

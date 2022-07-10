@@ -14,8 +14,11 @@ const Articles = ({navigation}) => {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <PostArticles navigation={navigation} />
       <WrapperScreen>
-        <HeaderTitle title="Marvel News" isSeeAll={false} />
-        <ArticleLists navigation={navigation} url={url} />
+        <ArticleLists
+          navigation={navigation}
+          url={url}
+          titleHeader="Marvel News"
+        />
       </WrapperScreen>
     </ScrollView>
   );

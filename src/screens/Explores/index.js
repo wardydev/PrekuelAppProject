@@ -10,6 +10,7 @@ import ArticleList from '../../components/ArticleLists';
 import useFetch from '../../hooks/useFetch';
 import {FlatList} from 'react-native-gesture-handler';
 import ArticleSearch from '../../components/ArticleSearch';
+import ArticleListsSkleton from '../../components/skleton/ArticleListSkleton';
 
 const Explores = ({navigation}) => {
   const [isSearch, setIsSearch] = useState(false);
@@ -44,6 +45,20 @@ const Explores = ({navigation}) => {
   const url =
     'https://prekuel.com/wp-json/wp/v2/posts?categories=38&per_page=5';
 
+  const skletonLoading = () => {
+    return (
+      <View>
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+        <ArticleListsSkleton />
+      </View>
+    );
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <WrapperScreen>
@@ -54,17 +69,20 @@ const Explores = ({navigation}) => {
           onChangeText={text => filteredData(text)}
           value={search}
         />
+
+        {loading && skletonLoading()}
+
         {isSearch ? (
           <ArticleSearch dataFiltered={dataFiltered} navigation={navigation} />
         ) : (
           <View>
             <TagCategories navigation={navigation} />
-            <HeaderTitle
-              isSeeAll={true}
-              title="Rekomendasi"
+            <ArticleList
+              url={url}
               navigation={navigation}
+              isPost={false}
+              titleHeader={'Rekomendasi'}
             />
-            <ArticleList url={url} navigation={navigation} isPost={false} />
           </View>
         )}
       </WrapperScreen>

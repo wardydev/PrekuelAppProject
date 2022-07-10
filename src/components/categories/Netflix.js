@@ -9,8 +9,7 @@ const Netflix = () => {
     'https://prekuel.com/wp-json/wp/v2/posts?categories=39&per_page=30';
   return (
     <WrapperScreen>
-      <HeaderTitle title="Netflix news" />
-      <ArticleLists url={url} isPost={false} />
+      <ArticleLists url={url} isPost={false} titleHeader={'Netflix'} />
     </WrapperScreen>
   );
 };

@@ -9,8 +9,7 @@ const Movie = () => {
     'https://prekuel.com/wp-json/wp/v2/posts?categories=161&per_page=30';
   return (
     <WrapperScreen>
-      <HeaderTitle title="Movie news" />
-      <ArticleLists url={url} isPost={false} />
+      <ArticleLists url={url} isPost={false} titleHeader={'Movie News'} />
     </WrapperScreen>
   );
 };
