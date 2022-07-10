@@ -18,7 +18,7 @@ import ArticleListsSkleton from '../skleton/ArticleListSkleton';
 import HeaderTitle from '../HeaderTitle';
 import ErrorSection from '../ErrorSection';
 
-const ArticleLists = ({url, isPost, titleHeader}) => {
+const ArticleLists = ({url, isPost, titleHeader, isSeeAll}) => {
   const {data, loading, error} = useFetch(url);
   const navigation = useNavigation();
 
@@ -85,7 +85,7 @@ const ArticleLists = ({url, isPost, titleHeader}) => {
     <View>
       <HeaderTitle
         title={titleHeader}
-        isSeeAll={true}
+        isSeeAll={isSeeAll}
         navigation={navigation}
       />
       <FlatList

@@ -82,6 +82,7 @@ const Explores = ({navigation}) => {
               navigation={navigation}
               isPost={false}
               titleHeader={'Rekomendasi'}
+              isSeeAll={true}
             />
           </View>
         )}

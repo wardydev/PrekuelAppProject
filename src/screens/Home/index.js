@@ -16,6 +16,7 @@ const Home = ({navigation}) => {
           url={url}
           isPost={true}
           titleHeader="Post Terbaru"
+          isSeeAll={true}
         />
       </WrapperScreen>
     </ScrollView>

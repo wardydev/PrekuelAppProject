@@ -3,7 +3,6 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {StyleSheet} from 'react-native';
 
 import ArticleLists from '../../components/ArticleLists';
-import HeaderTitle from '../../components/HeaderTitle';
 import PostArticles from '../../components/PostArticles';
 import WrapperScreen from '../../components/WrapperScreen';
 
@@ -18,6 +17,7 @@ const Articles = ({navigation}) => {
           navigation={navigation}
           url={url}
           titleHeader="Marvel News"
+          isSeeAll={false}
         />
       </WrapperScreen>
     </ScrollView>
