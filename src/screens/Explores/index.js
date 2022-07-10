@@ -5,20 +5,17 @@ import WrapperScreen from '../../components/WrapperScreen';
 import HeadingScreen from '../../components/atomic/HeadingScreen';
 import {primaryFont} from '../../utils/constants/fontSize';
 import TagCategories from '../../components/TagCategories';
-import HeaderTitle from '../../components/HeaderTitle';
 import ArticleList from '../../components/ArticleLists';
 import useFetch from '../../hooks/useFetch';
-import {FlatList} from 'react-native-gesture-handler';
 import ArticleSearch from '../../components/ArticleSearch';
 import ArticleListsSkleton from '../../components/skleton/ArticleListSkleton';
+import {URLRECOMMENDATION, URLSEARCHPOST} from '../../utils/constants/urls';
+import ErrorSection from '../../components/ErrorSection';
 
 const Explores = ({navigation}) => {
   const [isSearch, setIsSearch] = useState(false);
   const [search, setSearch] = useState('');
-  const {data, loading, error} = useFetch(
-    'https://prekuel.com/wp-json/wp/v2/posts?per_page=100',
-    search,
-  );
+  const {data, loading, error} = useFetch(URLSEARCHPOST, search);
   const [dataFiltered, setDataFiltered] = useState();
 
   const filteredData = text => {
@@ -42,8 +39,7 @@ const Explores = ({navigation}) => {
     }
   };
 
-  const url =
-    'https://prekuel.com/wp-json/wp/v2/posts?categories=38&per_page=5';
+  const url = URLRECOMMENDATION;
 
   const skletonLoading = () => {
     return (
@@ -58,6 +54,10 @@ const Explores = ({navigation}) => {
       </View>
     );
   };
+
+  if (error) {
+    return <ErrorSection />;
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

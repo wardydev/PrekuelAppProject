@@ -3,9 +3,10 @@ import {ScrollView} from 'react-native';
 import CarouseBanner from '../../components/CarouselBanner';
 import WrapperScreen from '../../components/WrapperScreen';
 import ArticleLists from '../../components/ArticleLists';
+import {URLPOSTTERBARU} from '../../utils/constants/urls';
 
 const Home = ({navigation}) => {
-  const url = 'https://prekuel.com/wp-json/wp/v2/posts?per_page=10';
+  const url = URLPOSTTERBARU;
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <CarouseBanner navigation={navigation} titleHeader="Trending" />

@@ -3,6 +3,7 @@ import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import useFetch from '../../hooks/useFetch';
+import {URLBANNER} from '../../utils/constants/urls';
 import ErrorSection from '../ErrorSection';
 import HeaderTitle from '../HeaderTitle';
 import BannerSkleton from '../skleton/BannerSkleton';
@@ -14,9 +15,7 @@ const CarouseBanner = ({titleHeader}) => {
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
 
-  const {data, loading, error} = useFetch(
-    'https://prekuel.com/wp-json/wp/v2/posts?categories=42&per_page=3',
-  );
+  const {data, loading, error} = useFetch(URLBANNER);
 
   if (loading) {
     return (
