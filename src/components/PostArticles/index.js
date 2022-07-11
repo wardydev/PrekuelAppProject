@@ -3,17 +3,25 @@ import {View, Dimensions, StyleSheet, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import useFetch from '../../hooks/useFetch';
+import PostSkleton from '../skleton/PostSkleton';
+import WrapperScreen from '../WrapperScreen';
 import PostItem from './PostItem';
 
 const PostArticles = () => {
   const postRef = useRef();
   const [index, setIndex] = useState(0);
   const windowWidth = Dimensions.get('window').width;
-  const {data, loading, error} = useFetch(
+  const {data, loading} = useFetch(
     'https://prekuel.com/wp-json/wp/v2/posts?categories=42&per_page=3',
   );
 
-  if (loading) return <Text style={{backgroundColor: 'red'}}>Loading...</Text>;
+  if (loading) {
+    return (
+      <WrapperScreen>
+        <PostSkleton />
+      </WrapperScreen>
+    );
+  }
 
   return (
     <View style={styles.postContainer}>

@@ -65,7 +65,7 @@ const Explores = ({navigation}) => {
         <HeadingScreen heading="Explores" paragraph="Cari Artikelmu Disini!" />
         <TextInput
           style={styles.input}
-          placeholder="Cari berita mu disini.."
+          placeholder="Marvel avengers"
           onChangeText={text => filteredData(text)}
           value={search}
         />
@@ -81,7 +81,7 @@ const Explores = ({navigation}) => {
               url={url}
               navigation={navigation}
               isPost={false}
-              titleHeader={'Rekomendasi'}
+              titleHeader={'Anime'}
               isSeeAll={true}
             />
           </View>
