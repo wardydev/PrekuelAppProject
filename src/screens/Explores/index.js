@@ -18,14 +18,7 @@ const Explores = ({navigation}) => {
   const {data, loading, error} = useFetch(URLSEARCHPOST, search);
   const [dataFiltered, setDataFiltered] = useState();
 
-  const filteredData = text => {
-    setSearch(text);
-    setIsSearch(true);
-
-    if (text === '') {
-      setIsSearch(false);
-    }
-
+  const handleKeyPress = ({nativeEvent: {text}}) => {
     if (text) {
       const newData = data.filter(item => {
         return (
@@ -36,6 +29,14 @@ const Explores = ({navigation}) => {
         );
       });
       setDataFiltered(newData && newData);
+    }
+  };
+
+  const handleTyping = text => {
+    setSearch(text);
+    setIsSearch(true);
+    if (text === '') {
+      setIsSearch(false);
     }
   };
 
@@ -66,8 +67,12 @@ const Explores = ({navigation}) => {
         <TextInput
           style={styles.input}
           placeholder="Marvel avengers"
-          onChangeText={text => filteredData(text)}
+          // onChangeText={text => filteredData(text)}
+          onChangeText={text => handleTyping(text)}
           value={search}
+          // onKeyPress={handleKeyPress}
+          onSubmitEditing={handleKeyPress}
+          keyboardType="web-search"
         />
 
         {loading && skletonLoading()}

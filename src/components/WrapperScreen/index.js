@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#f8f9fa',
     paddingVertical: 16,
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
     overflow: 'hidden',
   },
 });
