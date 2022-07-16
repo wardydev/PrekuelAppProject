@@ -1,7 +1,6 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
-import Articles from '../screens/Articles';
 import Categories from '../screens/Categories';
 import All from '../components/categories/All';
 

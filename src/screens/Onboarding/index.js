@@ -27,7 +27,9 @@ const Onboarding = ({navigation}) => {
   });
 
   useEffect(() => {
-    if (!viewableItems[0] || currentPage === viewableItems[0].index) return;
+    if (!viewableItems[0] || currentPage === viewableItems[0].index) {
+      return;
+    }
     setCurrentPage(viewableItems[0].index);
   }, [viewableItems, currentPage]);
 

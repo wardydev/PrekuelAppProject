@@ -1,8 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {Image, View, StyleSheet, Text} from 'react-native';
+import React, {useEffect} from 'react';
+import {Image, View, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Explores from '../screens/Explores';
 import Article from '../screens/Article';
@@ -24,27 +22,18 @@ function LogoTitle() {
 }
 
 const StackNavigation = () => {
-  const navigation = useNavigation();
-  const [isBoarded, setIsBoarded] = useState(null);
-
-  useEffect(() => {
-    const getAsyncStorage = async () => {
-      const storage = await AsyncStorage.getItem('onboarded');
-      setIsBoarded(storage);
-    };
-
-    getAsyncStorage();
-  }, []);
-
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      {isBoarded && (
-        <Stack.Screen
-          options={{headerShown: false}}
-          name="Onboarding"
-          component={Onboarding}
-        />
-      )}
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="SplashScreen"
+        component={SplashScreen}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="Onboarding"
+        component={Onboarding}
+      />
       <Stack.Screen
         options={{
           headerTitle: props => (
@@ -62,11 +51,7 @@ const StackNavigation = () => {
       />
       <Stack.Screen name="Explores" component={Explores} />
       <Stack.Screen name="Articles" component={TopNavigation} />
-      <Stack.Screen
-        options={{headerShown: false}}
-        name="SplashScreen"
-        component={SplashScreen}
-      />
+
       <Stack.Screen
         options={{headerTitleAlign: 'center'}}
         name="Article"
