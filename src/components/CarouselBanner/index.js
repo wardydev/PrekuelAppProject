@@ -36,7 +36,7 @@ const CarouseBanner = ({titleHeader}) => {
       </WrapperScreen>
       <Carousel
         ref={carouselRef}
-        data={data && data}
+        data={data && data.reverse()}
         renderItem={({item, i}) => <CarouselItem data={item && item} key={i} />}
         sliderWidth={windowWidth}
         itemWidth={300}

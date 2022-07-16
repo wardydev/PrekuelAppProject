@@ -1,5 +1,4 @@
-export const URLBANNER =
-  'https://prekuel.com/wp-json/wp/v2/posts?categories=42&per_page=3';
+export const URLBANNER = 'https://prekuel.com/wp-json/wp/v2/posts?per_page=4';
 export const URLPOSTTERBARU =
   'https://prekuel.com/wp-json/wp/v2/posts?per_page=10';
 export const URLRECOMMENDATION =
