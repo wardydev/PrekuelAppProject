@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {View, Dimensions, StyleSheet, Text} from 'react-native';
+import {View, Dimensions, StyleSheet} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import useFetch from '../../hooks/useFetch';
@@ -36,7 +36,7 @@ const CarouseBanner = ({titleHeader}) => {
       </WrapperScreen>
       <Carousel
         ref={carouselRef}
-        data={data && data.reverse()}
+        data={data}
         renderItem={({item, i}) => <CarouselItem data={item && item} key={i} />}
         sliderWidth={windowWidth}
         itemWidth={300}

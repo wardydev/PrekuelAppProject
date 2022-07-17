@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import {TextInput, StyleSheet, ScrollView, View, Text} from 'react-native';
+import {TextInput, StyleSheet, ScrollView, View} from 'react-native';
 
 import WrapperScreen from '../../components/WrapperScreen';
 import HeadingScreen from '../../components/atomic/HeadingScreen';
 import {primaryFont} from '../../utils/constants/fontSize';
 import TagCategories from '../../components/TagCategories';
-import ArticleList from '../../components/ArticleLists';
 import useFetch from '../../hooks/useFetch';
 import ArticleSearch from '../../components/ArticleSearch';
 import ArticleListsSkleton from '../../components/skleton/ArticleListSkleton';
-import {URLRECOMMENDATION, URLSEARCHPOST} from '../../utils/constants/urls';
+import {URLSEARCHPOST} from '../../utils/constants/urls';
 import ErrorSection from '../../components/ErrorSection';
+import Recomendation from '../../components/Recomendation';
 
 const Explores = ({navigation}) => {
   const [isSearch, setIsSearch] = useState(false);
@@ -40,8 +40,6 @@ const Explores = ({navigation}) => {
     }
   };
 
-  const url = URLRECOMMENDATION;
-
   const skletonLoading = () => {
     return (
       <View>
@@ -67,28 +65,27 @@ const Explores = ({navigation}) => {
         <TextInput
           style={styles.input}
           placeholder="Marvel avengers"
-          // onChangeText={text => filteredData(text)}
           onChangeText={text => handleTyping(text)}
           value={search}
-          // onKeyPress={handleKeyPress}
           onSubmitEditing={handleKeyPress}
           keyboardType="web-search"
         />
 
-        {loading && skletonLoading()}
+        {isSearch && (
+          <View style={{marginBottom: 26}}>
+            <ArticleSearch
+              dataFiltered={dataFiltered}
+              navigation={navigation}
+            />
+          </View>
+        )}
 
-        {isSearch ? (
-          <ArticleSearch dataFiltered={dataFiltered} navigation={navigation} />
+        {loading ? (
+          skletonLoading()
         ) : (
           <View>
             <TagCategories navigation={navigation} />
-            <ArticleList
-              url={url}
-              navigation={navigation}
-              isPost={false}
-              titleHeader={'Anime'}
-              isSeeAll={true}
-            />
+            <Recomendation />
           </View>
         )}
       </WrapperScreen>
