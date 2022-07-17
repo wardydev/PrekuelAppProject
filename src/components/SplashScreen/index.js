@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {StackActions, useNavigation} from '@react-navigation/native';
-import {View, StyleSheet, Dimensions, Image} from 'react-native';
+import {View, StyleSheet, Dimensions, Image, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {secondaryColor} from '../../utils/constants/fontSize';
@@ -9,12 +9,10 @@ const {width, height} = Dimensions.get('window');
 
 const SplashScreen = () => {
   const navigation = useNavigation();
-  const [isBoarded, setIsBoarded] = useState(null);
 
   useEffect(() => {
     const getAsyncStorage = async () => {
       const storage = await AsyncStorage.getItem('onboarded');
-      console.log(storage);
 
       if (!storage) {
         setTimeout(() => {
@@ -34,7 +32,18 @@ const SplashScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/logo/logo.png')} />
+      <View></View>
+      <Image
+        style={styles.splashLogo}
+        source={require('../../assets/logo/splashLogo.png')}
+      />
+      <View style={styles.btmLogoContainer}>
+        <Text style={styles.textBtm}>Based on</Text>
+        <Image
+          style={styles.btmImage}
+          source={require('../../assets/logo/bottomLogo.png')}
+        />
+      </View>
     </View>
   );
 };
@@ -45,8 +54,29 @@ const styles = StyleSheet.create({
     height: height,
     backgroundColor: secondaryColor,
     display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  splashLogo: {
+    width: 56,
+    height: 90,
+  },
+  btmLogoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 56,
+  },
+  textBtm: {
+    marginBottom: 8,
+    color: 'white',
+    fontWeight: '500',
+  },
+  btmImage: {
+    width: 120,
+    height: 30,
   },
 });
 

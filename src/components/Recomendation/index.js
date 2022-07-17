@@ -63,7 +63,7 @@ const Recomendation = () => {
 
   return (
     <View>
-      <HeaderTitle title="Recomendation" />
+      <HeaderTitle title="Spesial Buat Kamu 😍" />
       <FlatList
         data={shuffleData(data)}
         renderItem={renderItem}

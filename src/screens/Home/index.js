@@ -11,7 +11,10 @@ const Home = ({navigation}) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <CarouseBanner navigation={navigation} titleHeader="Trending" />
+      <CarouseBanner
+        navigation={navigation}
+        titleHeader="Lagi trending nih 🔥"
+      />
       <WrapperScreen>
         <ArticleLists
           navigation={navigation}
