@@ -1,4 +1,7 @@
 {
   "name": "PrekuelAppProject",
-  "displayName": "PrekuelAppProject"
+  "displayName": "PrekuelAppProject",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-3400549097964087~9291140193"
+  }
 }

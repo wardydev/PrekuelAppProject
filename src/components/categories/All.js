@@ -9,7 +9,12 @@ const All = () => {
   return (
     <WrapperScreen>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ArticleLists url={url} isPost={false} titleHeader={'Semua Kategori'} />
+        <ArticleLists
+          url={url}
+          isPost={false}
+          titleHeader={'Semua Kategori'}
+          isAdd={true}
+        />
       </ScrollView>
     </WrapperScreen>
   );

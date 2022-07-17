@@ -7,6 +7,7 @@ import {
   Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {BannerAd, BannerAdSize, TestIds} from 'react-native-google-mobile-ads';
 
 import AutorTitle from '../atomic/AutorTitle';
 import TagTitle from '../atomic/TagTitle';
@@ -16,7 +17,20 @@ import TitleList from '../atomic/TitleList';
 const ArticleSearch = ({dataFiltered}) => {
   const navigation = useNavigation();
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item, index}) => {
+    if (index === 3) {
+      return (
+        <View style={styles.bannerAdContainer}>
+          <BannerAd
+            unitId={TestIds.BANNER}
+            size={BannerAdSize.LARGE_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
+        </View>
+      );
+    }
     return (
       <TouchableOpacity
         style={styles.container}
@@ -88,6 +102,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginTop: 6,
+  },
+  bannerAdContainer: {
+    marginVertical: 26,
   },
 });
 

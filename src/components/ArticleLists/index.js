@@ -7,6 +7,7 @@ import {
   FlatList,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {BannerAd, BannerAdSize, TestIds} from 'react-native-google-mobile-ads';
 
 import AutorTitle from '../atomic/AutorTitle';
 import TagTitle from '../atomic/TagTitle';
@@ -18,13 +19,37 @@ import ArticleListsSkleton from '../skleton/ArticleListSkleton';
 import HeaderTitle from '../HeaderTitle';
 import ErrorSection from '../ErrorSection';
 
-const ArticleLists = ({url, isPost, titleHeader, isSeeAll}) => {
+const ArticleLists = ({url, isPost, titleHeader, isSeeAll, isAdd}) => {
   const {data, loading, error} = useFetch(url);
   const navigation = useNavigation();
 
   const renderItem = ({item, index}) => {
     if (index === 2 && isPost === true) {
       return <PostArticles navigation={navigation} />;
+    } else if (index === 5 && isPost === true) {
+      return (
+        <View style={styles.bannerAdContainer}>
+          <BannerAd
+            unitId={TestIds.BANNER}
+            size={BannerAdSize.LARGE_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
+        </View>
+      );
+    } else if (index % 3 === 0 && isAdd === true) {
+      return (
+        <View style={styles.bannerAdContainer}>
+          <BannerAd
+            unitId={TestIds.BANNER}
+            size={BannerAdSize.LARGE_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
+        </View>
+      );
     }
     return (
       <TouchableOpacity
@@ -121,6 +146,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginTop: 6,
+  },
+  bannerAdContainer: {
+    marginVertical: 26,
   },
 });
 
