@@ -13,6 +13,7 @@ import AutorTitle from '../atomic/AutorTitle';
 import TagTitle from '../atomic/TagTitle';
 import TimeList from '../atomic/TimeList';
 import TitleList from '../atomic/TitleList';
+import {BANNERADD} from '../../utils/constants/admobString';
 
 const ArticleSearch = ({dataFiltered}) => {
   const navigation = useNavigation();
@@ -22,7 +23,7 @@ const ArticleSearch = ({dataFiltered}) => {
       return (
         <View style={styles.bannerAdContainer}>
           <BannerAd
-            unitId={TestIds.BANNER}
+            unitId={BANNERADD}
             size={BannerAdSize.LARGE_BANNER}
             requestOptions={{
               requestNonPersonalizedAdsOnly: true,

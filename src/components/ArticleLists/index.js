@@ -18,6 +18,7 @@ import PostArticles from '../PostArticles';
 import ArticleListsSkleton from '../skleton/ArticleListSkleton';
 import HeaderTitle from '../HeaderTitle';
 import ErrorSection from '../ErrorSection';
+import {BANNERADD} from '../../utils/constants/admobString';
 
 const ArticleLists = ({url, isPost, titleHeader, isSeeAll, isAdd}) => {
   const {data, loading, error} = useFetch(url);
@@ -30,7 +31,7 @@ const ArticleLists = ({url, isPost, titleHeader, isSeeAll, isAdd}) => {
       return (
         <View style={styles.bannerAdContainer}>
           <BannerAd
-            unitId={TestIds.BANNER}
+            unitId={BANNERADD}
             size={BannerAdSize.LARGE_BANNER}
             requestOptions={{
               requestNonPersonalizedAdsOnly: true,
@@ -42,7 +43,7 @@ const ArticleLists = ({url, isPost, titleHeader, isSeeAll, isAdd}) => {
       return (
         <View style={styles.bannerAdContainer}>
           <BannerAd
-            unitId={TestIds.BANNER}
+            unitId={BANNERADD}
             size={BannerAdSize.LARGE_BANNER}
             requestOptions={{
               requestNonPersonalizedAdsOnly: true,

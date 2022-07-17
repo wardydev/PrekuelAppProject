@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {BannerAd, BannerAdSize} from 'react-native-google-mobile-ads';
 
 import useFetch from '../../hooks/useFetch';
 import {URLRECOMMENDATION} from '../../utils/constants/urls';
@@ -16,12 +17,26 @@ import AutorTitle from '../atomic/AutorTitle';
 import TimeList from '../atomic/TimeList';
 import HeaderTitle from '../HeaderTitle';
 import {shuffleData} from '../../utils/functions/shuffleData';
+import {BANNERADD} from '../../utils/constants/admobString';
 
 const Recomendation = () => {
   const {data} = useFetch(URLRECOMMENDATION);
   const navigation = useNavigation();
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item, index}) => {
+    if (index === 2) {
+      return (
+        <View style={styles.bannerAdContainer}>
+          <BannerAd
+            unitId={BANNERADD}
+            size={BannerAdSize.LARGE_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
+        </View>
+      );
+    }
     return (
       <TouchableOpacity
         style={styles.container}
@@ -97,6 +112,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginTop: 6,
+  },
+  bannerAdContainer: {
+    marginVertical: 26,
   },
 });
 

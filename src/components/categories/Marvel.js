@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ArticleLists from '../ArticleLists';
-import HeaderTitle from '../HeaderTitle';
 import WrapperScreen from '../WrapperScreen';
 
 const Marvel = () => {

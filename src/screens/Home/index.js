@@ -6,6 +6,7 @@ import CarouseBanner from '../../components/CarouselBanner';
 import WrapperScreen from '../../components/WrapperScreen';
 import ArticleLists from '../../components/ArticleLists';
 import {URLPOSTTERBARU} from '../../utils/constants/urls';
+import {BANNERADD} from '../../utils/constants/admobString';
 
 const {width} = Dimensions.get('window');
 
@@ -21,7 +22,7 @@ const Home = ({navigation}) => {
       <WrapperScreen>
         <View style={styles.bannerAdContainer}>
           <BannerAd
-            unitId={TestIds.BANNER}
+            unitId={BANNERADD}
             size={BannerAdSize.LARGE_BANNER}
             requestOptions={{
               requestNonPersonalizedAdsOnly: true,
