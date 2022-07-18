@@ -17,15 +17,26 @@ const Explores = ({navigation}) => {
   const [search, setSearch] = useState('');
   const {data, loading, error} = useFetch(URLSEARCHPOST, search);
   const [dataFiltered, setDataFiltered] = useState();
+  const [showDefaultComponent, setShowDefaultComponent] = useState(true);
 
   const handleKeyPress = ({nativeEvent: {text}}) => {
+    console.log(text);
+    setShowDefaultComponent(false);
+    setIsSearch(true);
+
+    const textLowerCase = text.toLowerCase();
+
     if (text) {
       const newData = data.filter(item => {
         return (
-          item.title.rendered.toLowerCase().includes(text) ||
-          item.better_featured_image.alt_text.toLowerCase().includes(text) ||
-          item.better_featured_image.description.toLowerCase().includes(text) ||
-          item.content.rendered.toLowerCase().includes(text)
+          item.title.rendered.toLowerCase().includes(textLowerCase) ||
+          item.better_featured_image.alt_text
+            .toLowerCase()
+            .includes(textLowerCase) ||
+          item.better_featured_image.description
+            .toLowerCase()
+            .includes(textLowerCase) ||
+          item.content.rendered.toLowerCase().includes(textLowerCase)
         );
       });
       setDataFiltered(newData && newData);
@@ -34,18 +45,17 @@ const Explores = ({navigation}) => {
 
   const handleTyping = text => {
     setSearch(text);
-    setIsSearch(true);
     if (text === '') {
       setIsSearch(false);
+      setShowDefaultComponent(true);
+    } else {
+      setShowDefaultComponent(false);
     }
   };
 
   const skletonLoading = () => {
     return (
       <View>
-        <ArticleListsSkleton />
-        <ArticleListsSkleton />
-        <ArticleListsSkleton />
         <ArticleListsSkleton />
         <ArticleListsSkleton />
         <ArticleListsSkleton />
@@ -80,9 +90,9 @@ const Explores = ({navigation}) => {
           </View>
         )}
 
-        {loading ? (
-          skletonLoading()
-        ) : (
+        {loading && skletonLoading()}
+
+        {showDefaultComponent && (
           <View>
             <TagCategories navigation={navigation} />
             <Recomendation />
