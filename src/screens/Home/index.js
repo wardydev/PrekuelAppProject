@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, View, StyleSheet, Dimensions} from 'react-native';
-import {BannerAd, BannerAdSize, TestIds} from 'react-native-google-mobile-ads';
+import {BannerAd, BannerAdSize} from 'react-native-google-mobile-ads';
 
 import CarouseBanner from '../../components/CarouselBanner';
 import WrapperScreen from '../../components/WrapperScreen';

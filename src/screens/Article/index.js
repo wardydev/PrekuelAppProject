@@ -12,10 +12,12 @@ import {useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Share from 'react-native-share';
+import {BannerAd, BannerAdSize} from 'react-native-google-mobile-ads';
 
 import AutorTitle from '../../components/atomic/AutorTitle';
 import TimeList from '../../components/atomic/TimeList';
 import WrapperScreen from '../../components/WrapperScreen';
+import {BANNERADD} from '../../utils/constants/admobString';
 
 const {width} = Dimensions.get('window');
 
@@ -123,12 +125,30 @@ const Article = ({route}) => {
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.bannerAdContainer}>
+          <BannerAd
+            unitId={BANNERADD}
+            size={BannerAdSize.LARGE_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
+        </View>
         <View style={styles.contentContainer}>
           <RenderHtml
             contentWidth={width}
             source={{html: source && source}}
             tagsStyles={tagsStyles}
             renderersProps={renderersProps}
+          />
+        </View>
+        <View style={styles.bannerTopAdContainer}>
+          <BannerAd
+            unitId={BANNERADD}
+            size={BannerAdSize.LARGE_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
           />
         </View>
       </WrapperScreen>
@@ -182,6 +202,13 @@ const styles = StyleSheet.create({
     fontFamily: primaryFont,
     lineHeight: 24,
     textAlign: 'justify',
+  },
+  bannerAdContainer: {
+    width: width,
+    marginBottom: 26,
+  },
+  bannerTopAdContainer: {
+    marginTop: 26,
   },
 });
 
